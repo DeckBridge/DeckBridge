@@ -48,7 +48,8 @@ import {
 
 import {
   getAuth,
-  signInAnonymously,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 
@@ -72,73 +73,80 @@ const auth = getAuth(app);
 const cloudName = "dfc4j6dae";
 const uploadPreset = "Upload_Picture";
 
-// ===== 用户信息 =====
+// ===== 当前用户 =====
 let uid = null;
-let userEmail = "anonymous";
+let email = null;
 
-// 自动匿名登录
-signInAnonymously(auth);
+// ===== 注册 =====
+window.register = function () {
+  const em = document.getElementById("email").value;
+  const pw = document.getElementById("password").value;
 
-// 获取用户ID
+  createUserWithEmailAndPassword(auth, em, pw);
+};
+
+// ===== 登录 =====
+window.login = function () {
+  const em = document.getElementById("email").value;
+  const pw = document.getElementById("password").value;
+
+  signInWithEmailAndPassword(auth, em, pw);
+};
+
+// ===== 监听登录状态 =====
 onAuthStateChanged(auth, (user) => {
   if (user) {
     uid = user.uid;
-    console.log("登录用户:", uid);
+    email = user.email;
+
+    console.log("已登录:", email);
+
+    loadImages();
   }
 });
 
-// ===== 上传逻辑 =====
+// ===== 上传 =====
 document.getElementById("fileInput").addEventListener("change", async function () {
 
+  if (!uid) {
+    alert("请先登录");
+    return;
+  }
+
   const file = this.files[0];
-  document.getElementById("status").innerText = "上传中...";
 
   const formData = new FormData();
   formData.append("file", file);
   formData.append("upload_preset", uploadPreset);
 
-  try {
-    const res = await fetch(
-      `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-      {
-        method: "POST",
-        body: formData
-      }
-    );
-
-    const data = await res.json();
-
-    if (!data.secure_url) {
-      document.getElementById("status").innerText = "上传失败";
-      console.log(data);
-      return;
+  const res = await fetch(
+    `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+    {
+      method: "POST",
+      body: formData
     }
+  );
 
-    document.getElementById("preview").src = data.secure_url;
+  const data = await res.json();
 
-    // 存入“用户专属空间”
-    push(ref(db, "users/" + uid + "/images"), {
-      url: data.secure_url,
-      time: Date.now()
-    });
-
-    document.getElementById("status").innerText = "上传成功！";
-
-  } catch (err) {
-    console.log(err);
-    document.getElementById("status").innerText = "网络错误";
-  }
-});
-
-// ===== 管理员查看 =====
-window.check = function () {
-
-  const password = document.getElementById("pwd").value;
-
-  if (password !== "123456") {
-    alert("密码错误");
+  if (!data.secure_url) {
+    alert("上传失败");
+    console.log(data);
     return;
   }
+
+  // 存数据库（带邮箱）
+  push(ref(db, "users/" + uid + "/images"), {
+    url: data.secure_url,
+    email: email,
+    time: Date.now()
+  });
+
+  document.getElementById("preview").src = data.secure_url;
+});
+
+// ===== 加载图片 =====
+function loadImages() {
 
   onValue(ref(db, "users/" + uid + "/images"), (snapshot) => {
 
@@ -153,11 +161,15 @@ window.check = function () {
       img.width = 200;
       img.style.margin = "10px";
 
+      const text = document.createElement("p");
+      text.innerText = "上传者：" + data.email;
+
       gallery.appendChild(img);
+      gallery.appendChild(text);
     });
 
   });
-};
+}
 
 </script>
 
