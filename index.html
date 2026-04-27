@@ -44,20 +44,23 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
 
-// 🔴 这里必须换成你的 Firebase 配置
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  databaseURL: "YOUR_DB_URL",
-  projectId: "YOUR_PROJECT_ID"
+  apiKey: "AIzaSyCg6tSHCPJqgTXo3QX1DEwgdROLonj9p20",
+  authDomain: "science-af1d8.firebaseapp.com",
+  databaseURL: "https://science-af1d8-default-rtdb.firebaseio.com",
+  projectId: "science-af1d8",
+  storageBucket: "science-af1d8.firebasestorage.app",
+  messagingSenderId: "779390611141",
+  appId: "1:779390611141:web:02c169354a1e8dbf4f0aac",
+  measurementId: "G-0SMFGP5P1X"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 // 🔵 Cloudinary配置（必须改）
-const cloudName = "YOUR_CLOUD_NAME";
-const uploadPreset = "YOUR_UPLOAD_PRESET";
+const cloudName = "dfc4j6dae";
+const uploadPreset = "Upload_Picture";
 
 // ===== 上传逻辑 =====
 document.getElementById("fileInput").addEventListener("change", async function() {
