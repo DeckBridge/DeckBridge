@@ -1,15 +1,5 @@
 <!DOCTYPE html>
 <html>
-
-<h2>Login System</h2>
-
-<input id="email" placeholder="email">
-<input id="password" placeholder="password">
-
-<button onclick="register()">注册</button>
-<button onclick="login()">登录</button>
-
-<p id="userStatus">未登录</p>
 <head>
   <meta charset="UTF-8">
   <title>Environmental Science</title>
@@ -24,10 +14,21 @@
 
     h1 { color: blue; }
     button { padding: 10px 20px; font-size: 16px; }
+    input { margin: 5px; padding: 5px; }
   </style>
 </head>
 
 <body>
+
+<h2>Login System</h2>
+
+<input id="email" placeholder="email">
+<input id="password" placeholder="password">
+
+<button onclick="register()">注册</button>
+<button onclick="login()">登录</button>
+
+<p id="userStatus">未登录</p>
 
 <h1>Welcome Science Nerds!</h1>
 <p>This is a site for environmental science</p>
@@ -47,6 +48,8 @@
 <button onclick="check()">进入</button>
 
 <div id="gallery"></div>
+
+<script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
 import {
@@ -71,8 +74,7 @@ const firebaseConfig = {
   projectId: "science-af1d8",
   storageBucket: "science-af1d8.firebasestorage.app",
   messagingSenderId: "779390611141",
-  appId: "1:779390611141:web:02c169354a1e8dbf4f0aac",
-  measurementId: "G-0SMFGP5P1X"
+  appId: "1:779390611141:web:02c169354a1e8dbf4f0aac"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -87,12 +89,17 @@ const uploadPreset = "Upload_Picture";
 let uid = null;
 let email = null;
 
+// ===== UI状态 =====
+const userStatus = document.getElementById("userStatus");
+
 // ===== 注册 =====
 window.register = function () {
   const em = document.getElementById("email").value;
   const pw = document.getElementById("password").value;
 
-  createUserWithEmailAndPassword(auth, em, pw);
+  createUserWithEmailAndPassword(auth, em, pw)
+    .then(() => alert("注册成功"))
+    .catch(err => alert(err.message));
 };
 
 // ===== 登录 =====
@@ -100,18 +107,24 @@ window.login = function () {
   const em = document.getElementById("email").value;
   const pw = document.getElementById("password").value;
 
-  signInWithEmailAndPassword(auth, em, pw);
+  signInWithEmailAndPassword(auth, em, pw)
+    .then(() => alert("登录成功"))
+    .catch(err => alert(err.message));
 };
 
-// ===== 监听登录状态 =====
+// ===== 登录状态监听 =====
 onAuthStateChanged(auth, (user) => {
   if (user) {
     uid = user.uid;
     email = user.email;
 
-    console.log("已登录:", email);
+    userStatus.innerText = "已登录：" + email;
 
     loadImages();
+  } else {
+    uid = null;
+    email = null;
+    userStatus.innerText = "未登录";
   }
 });
 
@@ -124,6 +137,8 @@ document.getElementById("fileInput").addEventListener("change", async function (
   }
 
   const file = this.files[0];
+
+  document.getElementById("status").innerText = "上传中...";
 
   const formData = new FormData();
   formData.append("file", file);
@@ -140,12 +155,12 @@ document.getElementById("fileInput").addEventListener("change", async function (
   const data = await res.json();
 
   if (!data.secure_url) {
-    alert("上传失败");
+    document.getElementById("status").innerText = "上传失败";
     console.log(data);
     return;
   }
 
-  // 存数据库（带邮箱）
+  // 存数据库
   push(ref(db, "users/" + uid + "/images"), {
     url: data.secure_url,
     email: email,
@@ -153,6 +168,7 @@ document.getElementById("fileInput").addEventListener("change", async function (
   });
 
   document.getElementById("preview").src = data.secure_url;
+  document.getElementById("status").innerText = "上传成功！";
 });
 
 // ===== 加载图片 =====
@@ -180,6 +196,18 @@ function loadImages() {
 
   });
 }
+
+// ===== 管理员（可选）=====
+window.check = function () {
+  const pwd = document.getElementById("pwd").value;
+
+  if (pwd !== "123456") {
+    alert("密码错误");
+    return;
+  }
+
+  alert("这里可以以后改成全站查看");
+};
 
 </script>
 
