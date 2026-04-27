@@ -38,12 +38,21 @@
 
 <div id="gallery"></div>
 
-<script type="module">
-
-// 🔥 Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+import {
+  getDatabase,
+  ref,
+  push,
+  onValue
+} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
 
+import {
+  getAuth,
+  signInAnonymously,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+// ===== Firebase config =====
 const firebaseConfig = {
   apiKey: "AIzaSyCg6tSHCPJqgTXo3QX1DEwgdROLonj9p20",
   authDomain: "science-af1d8.firebaseapp.com",
@@ -57,13 +66,29 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+const auth = getAuth(app);
 
-// 🔵 Cloudinary配置（必须改）
+// ===== Cloudinary =====
 const cloudName = "dfc4j6dae";
 const uploadPreset = "Upload_Picture";
 
+// ===== 用户信息 =====
+let uid = null;
+let userEmail = "anonymous";
+
+// 自动匿名登录
+signInAnonymously(auth);
+
+// 获取用户ID
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    uid = user.uid;
+    console.log("登录用户:", uid);
+  }
+});
+
 // ===== 上传逻辑 =====
-document.getElementById("fileInput").addEventListener("change", async function() {
+document.getElementById("fileInput").addEventListener("change", async function () {
 
   const file = this.files[0];
   document.getElementById("status").innerText = "上传中...";
@@ -72,27 +97,41 @@ document.getElementById("fileInput").addEventListener("change", async function()
   formData.append("file", file);
   formData.append("upload_preset", uploadPreset);
 
-  const res = await fetch(
-    `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-    {
-      method: "POST",
-      body: formData
+  try {
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+      {
+        method: "POST",
+        body: formData
+      }
+    );
+
+    const data = await res.json();
+
+    if (!data.secure_url) {
+      document.getElementById("status").innerText = "上传失败";
+      console.log(data);
+      return;
     }
-  );
 
-  const data = await res.json();
+    document.getElementById("preview").src = data.secure_url;
 
-  // 显示图片
-  document.getElementById("preview").src = data.secure_url;
+    // 存入“用户专属空间”
+    push(ref(db, "users/" + uid + "/images"), {
+      url: data.secure_url,
+      time: Date.now()
+    });
 
-  // 存 Firebase
-  push(ref(db, "images"), data.secure_url);
+    document.getElementById("status").innerText = "上传成功！";
 
-  document.getElementById("status").innerText = "上传成功！";
+  } catch (err) {
+    console.log(err);
+    document.getElementById("status").innerText = "网络错误";
+  }
 });
 
 // ===== 管理员查看 =====
-window.check = function() {
+window.check = function () {
 
   const password = document.getElementById("pwd").value;
 
@@ -101,17 +140,22 @@ window.check = function() {
     return;
   }
 
-  onValue(ref(db, "images"), (snapshot) => {
+  onValue(ref(db, "users/" + uid + "/images"), (snapshot) => {
+
     const gallery = document.getElementById("gallery");
     gallery.innerHTML = "";
 
     snapshot.forEach(child => {
+      const data = child.val();
+
       const img = document.createElement("img");
-      img.src = child.val();
+      img.src = data.url;
       img.width = 200;
       img.style.margin = "10px";
+
       gallery.appendChild(img);
     });
+
   });
 };
 
