@@ -1,90 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Environmental Science</title>
+  <meta charset="UTF-8">
+  <title>Environmental Science</title>
 
-</head>
-<body>
-    <h1>Welcome Science Nerds!</h1>
-	<style>
+  <style>
     body {
-        font-family: Arial;
-        text-align: center;
-        background-color: #f2f2f2;
-        padding: 50px;
+      font-family: Arial;
+      text-align: center;
+      background-color: #f2f2f2;
+      padding: 50px;
     }
 
-    h1 {
-        color: Blue;
-    }
+    h1 { color: blue; }
+    button { padding: 10px 20px; font-size: 16px; }
+  </style>
+</head>
 
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-    }
-</style>
-    <p>This is a site for environmental science</p>
+<body>
 
-    <h2>About us</h2>
-    <p>We are an initiative working to spread consciousness of environmental sciences</p>
+<h1>Welcome Science Nerds!</h1>
+<p>This is a site for environmental science</p>
 
-    <button onclick="alert('你点了按钮！')">
-        Upload Picture
-    </button>
-</body>
-<h2>上传图片（会永久保存）</h2>
+<h2>Upload Image</h2>
 
 <input type="file" id="fileInput">
-
-<br><br>
+<p id="status"></p>
 
 <img id="preview" width="300">
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>后台查看</title>
-</head>
+<hr>
 
-<body>
-  <h1>管理员图片库</h1>
+<h2>Admin Panel</h2>
 
-  <input type="password" id="pwd" placeholder="输入密码">
-  <button onclick="check()">进入</button>
+<input type="password" id="pwd" placeholder="输入密码">
+<button onclick="check()">进入</button>
 
-  <div id="gallery"></div>
+<div id="gallery"></div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+<script type="module">
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
+// 🔥 Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
 
+// 🔴 这里必须换成你的 Firebase 配置
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  databaseURL: "YOUR_DB_URL",
+  projectId: "YOUR_PROJECT_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+// 🔵 Cloudinary配置（必须改）
+const cloudName = "YOUR_CLOUD_NAME";
+const uploadPreset = "YOUR_UPLOAD_PRESET";
+
+// ===== 上传逻辑 =====
+document.getElementById("fileInput").addEventListener("change", async function() {
+
+  const file = this.files[0];
+  document.getElementById("status").innerText = "上传中...";
+
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", uploadPreset);
+
+  const res = await fetch(
+    `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+    {
+      method: "POST",
+      body: formData
+    }
+  );
+
+  const data = await res.json();
+
+  // 显示图片
+  document.getElementById("preview").src = data.secure_url;
+
+  // 存 Firebase
+  push(ref(db, "images"), data.secure_url);
+
+  document.getElementById("status").innerText = "上传成功！";
+});
+
+// ===== 管理员查看 =====
+window.check = function() {
+
+  const password = document.getElementById("pwd").value;
+
+  if (password !== "123456") {
+    alert("密码错误");
+    return;
+  }
+
+  onValue(ref(db, "images"), (snapshot) => {
     const gallery = document.getElementById("gallery");
+    gallery.innerHTML = "";
 
-    window.check = function() {
-      const password = document.getElementById("pwd").value;
+    snapshot.forEach(child => {
+      const img = document.createElement("img");
+      img.src = child.val();
+      img.width = 200;
+      img.style.margin = "10px";
+      gallery.appendChild(img);
+    });
+  });
+};
 
-      if (password !== "123456") {
-        alert("密码错误");
-        return;
-      }
+</script>
 
-      onValue(ref(db, "images"), (snapshot) => {
-        gallery.innerHTML = "";
-
-        snapshot.forEach(child => {
-          const img = document.createElement("img");
-          img.src = child.val();
-          img.width = 200;
-          img.style.margin = "10px";
-          gallery.appendChild(img);
-        });
-      });
-    };
-  </script>
 </body>
 </html>
