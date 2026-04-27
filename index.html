@@ -25,12 +25,12 @@
 <input id="email" placeholder="email">
 <input id="password" placeholder="password">
 
-<button onclick="register()">注册</button>
-<button onclick="login()">登录</button>
+<button onclick="register()">sign up</button>
+<button onclick="login()">log in</button>
 
-<p id="userStatus">未登录</p>
+<p id="userStatus">Please login to upload your picture</p>
 
-<h1>Welcome Science Nerds!</h1>
+<h1>Welcome!</h1>
 <p>This is a site for environmental science</p>
 
 <h2>Upload Image</h2>
@@ -44,8 +44,8 @@
 
 <h2>Admin Panel</h2>
 
-<input type="password" id="pwd" placeholder="输入密码">
-<button onclick="check()">进入</button>
+<input type="password" id="pwd" placeholder="Enter Password">
+<button onclick="check()">enter</button>
 
 <div id="gallery"></div>
 
@@ -98,7 +98,7 @@ window.register = function () {
   const pw = document.getElementById("password").value;
 
   createUserWithEmailAndPassword(auth, em, pw)
-    .then(() => alert("注册成功"))
+    .then(() => alert("Sign up successfully"))
     .catch(err => alert(err.message));
 };
 
@@ -108,7 +108,7 @@ window.login = function () {
   const pw = document.getElementById("password").value;
 
   signInWithEmailAndPassword(auth, em, pw)
-    .then(() => alert("登录成功"))
+    .then(() => alert("Log in successfully"))
     .catch(err => alert(err.message));
 };
 
@@ -118,13 +118,13 @@ onAuthStateChanged(auth, (user) => {
     uid = user.uid;
     email = user.email;
 
-    userStatus.innerText = "已登录：" + email;
+    userStatus.innerText = "You are now logged in as: " + email;
 
     loadImages();
   } else {
     uid = null;
     email = null;
-    userStatus.innerText = "未登录";
+    userStatus.innerText = "Not logged in";
   }
 });
 
@@ -155,7 +155,7 @@ document.getElementById("fileInput").addEventListener("change", async function (
   const data = await res.json();
 
   if (!data.secure_url) {
-    document.getElementById("status").innerText = "上传失败";
+    document.getElementById("status").innerText = "Upload failed";
     console.log(data);
     return;
   }
@@ -168,7 +168,7 @@ document.getElementById("fileInput").addEventListener("change", async function (
   });
 
   document.getElementById("preview").src = data.secure_url;
-  document.getElementById("status").innerText = "上传成功！";
+  document.getElementById("status").innerText = "Upload successfully！";
 });
 
 // ===== 加载图片 =====
@@ -188,7 +188,7 @@ function loadImages() {
       img.style.margin = "10px";
 
       const text = document.createElement("p");
-      text.innerText = "上传者：" + data.email;
+      text.innerText = "Uploader：" + data.email;
 
       gallery.appendChild(img);
       gallery.appendChild(text);
@@ -196,17 +196,6 @@ function loadImages() {
 
   });
 }
-
-// ===== 管理员（可选）=====
-window.check = function () {
-  const pwd = document.getElementById("pwd").value;
-
-  if (pwd !== "123456") {
-    alert("密码错误");
-    return;
-  }
-
-  alert("这里可以以后改成全站查看");
 };
 
 </script>
