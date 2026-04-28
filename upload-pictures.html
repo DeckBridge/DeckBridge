@@ -1,46 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Upload your pictures here!</title>
-
 <style>
 body {
   font-family: Arial;
   margin: 0;
   background: #f4f4f4;
-
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-  
-.navbar a {
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
-  display: inline-block; 
-}
 
-.navbar a:hover {
-  transform: scale(1.2);
-  text-decoration: underline;
-}
-
-
-<div class="navbar">
-  <a href="index.html">Home</a>
-  <a href="about.html">About Us</a>
-  <a href="physics.html">Physics</a>
-  <a href="envisci.html">Environmental Science</a>
-  <a href="upload-pictures">Upload Pictures</a>
-</div>
-  <style>
-    .navbar {
+/* navbar样式 */
+.navbar {
   display: flex;
   justify-content: center;
   gap: 30px;
-
   background: #333;
   padding: 15px;
 }
@@ -48,13 +23,18 @@ body {
 .navbar a {
   color: white;
   text-decoration: none;
+  transition: 0.3s;
+  display: inline-block;
 }
 
+.navbar a:hover {
+  transform: scale(1.2);
+  text-decoration: underline;
+}
 
-/* 标题 */
+/* 其他 */
 h1 {
   margin-top: 40px;
-  text-align: center;
 }
 
 .box {
@@ -65,16 +45,19 @@ h1 {
   width: 1200px;
   text-align: center;
 }
-
-#gallery img {
-  margin: 10px;
-  border-radius: 10px;
-}
 </style>
-
 </head>
 
 <body>
+
+<!-- ⭐ navbar必须在body里 -->
+<div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="physics.html">Physics</a>
+  <a href="envisci.html">Environmental Science</a>
+  <a href="upload-pictures">Upload Pictures</a>
+</div>
 
 <h1>Upload your pictures here!</h1>
 
