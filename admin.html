@@ -22,11 +22,30 @@ const gallery = document.getElementById("gallery");
 
 onValue(ref(db, "images"), (snapshot) => {
   gallery.innerHTML = "";
+
   snapshot.forEach(child => {
+    const data = child.val(); // 👈 now it's an object
+
+    const container = document.createElement("div");
+    container.style.margin = "15px";
+    container.style.padding = "10px";
+    container.style.border = "1px solid #ccc";
+    container.style.borderRadius = "10px";
+
     const img = document.createElement("img");
-    img.src = child.val();
+    img.src = data.url;
     img.width = 200;
-    gallery.appendChild(img);
+
+    const info = document.createElement("p");
+    info.innerText = 
+      "Uploader: " + data.email + 
+      " | UID: " + data.uid +
+      " | Time: " + new Date(data.time).toLocaleString();
+
+    container.appendChild(img);
+    container.appendChild(info);
+
+    gallery.appendChild(container);
   });
 });
 </script>
