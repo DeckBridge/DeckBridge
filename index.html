@@ -1,3 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Science Site</title>
+</head>
+
+<body>
+
+<h1>Environmental Science</h1>
+
+<!-- LOGIN -->
+<h2>Login System</h2>
+
+<input id="email" placeholder="email">
+<input id="password" placeholder="password">
+
+<button onclick="register()">Sign Up</button>
+<button onclick="login()">Log In</button>
+
+<p id="userStatus">Not logged in</p>
+
+<hr>
+
+<!-- UPLOAD -->
+<h2>Upload Image</h2>
+
+<input type="file" id="fileInput">
+<p id="status"></p>
+
+<img id="preview" width="200">
+
+<hr>
+
+<!-- GALLERY -->
+<div id="gallery"></div>
+
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
@@ -11,46 +48,36 @@ const firebaseConfig = {
   projectId: "science-af1d8",
   storageBucket: "science-af1d8.firebasestorage.app",
   messagingSenderId: "779390611141",
-  appId: "1:779390611141:web:02c169354a1e8dbf4f0aac",
-  measurementId: "G-0SMFGP5P1X"
+  appId: "1:779390611141:web:02c169354a1e8dbf4f0aac"
 };
 
-// ===== 初始化 =====
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const auth = getAuth(app);
 
-// ===== Cloudinary（这里填你的） =====
 const cloudName = "dfc4j6dae";
 const uploadPreset = "Upload_Picture";
-
-// ===== 获取 DOM =====
-const userStatus = document.getElementById("userStatus");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
 
 let uid = null;
 let userEmail = null;
 
-// ===== 注册 =====
+// DOM (SAFE CHECK)
+const userStatus = document.getElementById("userStatus");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+
+// ===== AUTH =====
 window.register = function () {
-  createUserWithEmailAndPassword(
-    auth,
-    emailInput.value,
-    passwordInput.value
-  );
+  createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value)
+  .catch(err => alert(err.message));
 };
 
-// ===== 登录 =====
 window.login = function () {
-  signInWithEmailAndPassword(
-    auth,
-    emailInput.value,
-    passwordInput.value
-  );
+  signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value)
+  .catch(err => alert(err.message));
 };
 
-// ===== 登录状态监听 =====
+// ===== STATE =====
 onAuthStateChanged(auth, (user) => {
   if (user) {
     uid = user.uid;
@@ -64,7 +91,7 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-// ===== 上传 =====
+// ===== UPLOAD =====
 document.getElementById("fileInput").addEventListener("change", async function () {
 
   if (!uid) {
@@ -88,6 +115,11 @@ document.getElementById("fileInput").addEventListener("change", async function (
 
   const data = await res.json();
 
+  if (!data.secure_url) {
+    alert("Upload failed");
+    return;
+  }
+
   push(ref(db, "users/" + uid + "/images"), {
     url: data.secure_url,
     email: userEmail
@@ -96,7 +128,7 @@ document.getElementById("fileInput").addEventListener("change", async function (
   document.getElementById("preview").src = data.secure_url;
 });
 
-// ===== 加载图片 =====
+// ===== LOAD =====
 function loadImages() {
   onValue(ref(db, "users/" + uid + "/images"), (snapshot) => {
 
@@ -120,3 +152,6 @@ function loadImages() {
 }
 
 </script>
+
+</body>
+</html>
