@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <title>Environmental Science</title>
 
-  <h1>Welcome!</h1>
-<p>This is a site for environmental science</p>
-  
   <style>
     body {
       font-family: Arial;
@@ -16,12 +13,31 @@
     }
 
     h1 { color: blue; }
-    button { padding: 10px 20px; font-size: 16px; }
-    input { margin: 5px; padding: 5px; }
+
+    .navbar {
+      background-color: #333;
+      padding: 15px;
+    }
+
+    .navbar a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-size: 18px;
+    }
   </style>
 </head>
 
 <body>
+
+<!-- 🔝 导航 -->
+<div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+</div>
+
+<h1>Welcome!</h1>
+<p>This is a site for environmental science</p>
 
 <h2>Login System</h2>
 
@@ -31,7 +47,7 @@
 <button onclick="register()">Sign Up</button>
 <button onclick="login()">Log In</button>
 
-<p id="userStatus">Please log in to upload your picture</p>
+<p id="userStatus">Please log in</p>
 
 <h2>Upload Image</h2>
 
@@ -45,83 +61,46 @@
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-import {
-  getDatabase,
-  ref,
-  push,
-  onValue
-} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
-
-// ===== Firebase config =====
 const firebaseConfig = {
-  apiKey: "AIzaSyCg6tSHCPJqgTXo3QX1DEwgdROLonj9p20",
-  authDomain: "science-af1d8.firebaseapp.com",
-  databaseURL: "https://science-af1d8-default-rtdb.firebaseio.com",
-  projectId: "science-af1d8",
-  storageBucket: "science-af1d8.firebasestorage.app",
-  messagingSenderId: "779390611141",
-  appId: "1:779390611141:web:02c169354a1e8dbf4f0aac"
+  apiKey: "你的key",
+  authDomain: "xxx.firebaseapp.com",
+  databaseURL: "xxx",
+  projectId: "xxx",
+  storageBucket: "xxx",
+  messagingSenderId: "xxx",
+  appId: "xxx"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const auth = getAuth(app);
 
-// ===== Cloudinary =====
 const cloudName = "dfc4j6dae";
 const uploadPreset = "Upload_Picture";
 
-// ===== 当前用户 =====
 let uid = null;
 let email = null;
 
-// ===== UI状态 =====
-const userStatus = document.getElementById("userStatus");
-
-// ===== 注册 =====
 window.register = function () {
-  const em = document.getElementById("email").value;
-  const pw = document.getElementById("password").value;
-
-  createUserWithEmailAndPassword(auth, em, pw)
-    .then(() => alert("Sign up successfully"))
-    .catch(err => alert(err.message));
+  createUserWithEmailAndPassword(auth, email.value, password.value);
 };
 
-// ===== 登录 =====
 window.login = function () {
-  const em = document.getElementById("email").value;
-  const pw = document.getElementById("password").value;
-
-  signInWithEmailAndPassword(auth, em, pw)
-    .then(() => alert("Log in successfully"))
-    .catch(err => alert(err.message));
+  signInWithEmailAndPassword(auth, email.value, password.value);
 };
 
-// ===== 登录状态监听 =====
 onAuthStateChanged(auth, (user) => {
   if (user) {
     uid = user.uid;
     email = user.email;
-
-    userStatus.innerText = "You are now logged in as: " + email;
-
+    userStatus.innerText = "Logged in: " + email;
     loadImages();
-  } else {
-    uid = null;
-    email = null;
-    userStatus.innerText = "Not logged in";
   }
 });
 
-// ===== 上传 =====
 document.getElementById("fileInput").addEventListener("change", async function () {
 
   if (!uid) {
@@ -131,153 +110,45 @@ document.getElementById("fileInput").addEventListener("change", async function (
 
   const file = this.files[0];
 
-  document.getElementById("status").innerText = "Uploading...";
-
   const formData = new FormData();
   formData.append("file", file);
   formData.append("upload_preset", uploadPreset);
 
-  const res = await fetch(
-    `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-    {
-      method: "POST",
-      body: formData
-    }
-  );
+  const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+    method: "POST",
+    body: formData
+  });
 
   const data = await res.json();
 
-  if (!data.secure_url) {
-    document.getElementById("status").innerText = "Upload failed";
-    console.log(data);
-    return;
-  }
-
-  // 存数据库
   push(ref(db, "users/" + uid + "/images"), {
     url: data.secure_url,
-    email: email,
-    time: Date.now()
+    email: email
   });
 
-  document.getElementById("preview").src = data.secure_url;
-  document.getElementById("status").innerText = "Upload successfully！";
+  preview.src = data.secure_url;
 });
 
-// ===== 加载图片 =====
 function loadImages() {
-
   onValue(ref(db, "users/" + uid + "/images"), (snapshot) => {
-
-    const gallery = document.getElementById("gallery");
     gallery.innerHTML = "";
 
     snapshot.forEach(child => {
-      const data = child.val();
+      const d = child.val();
 
       const img = document.createElement("img");
-      img.src = data.url;
+      img.src = d.url;
       img.width = 200;
-      img.style.margin = "10px";
 
-      const text = document.createElement("p");
-      text.innerText = "Uploader：" + data.email;
+      const p = document.createElement("p");
+      p.innerText = d.email;
 
       gallery.appendChild(img);
-      gallery.appendChild(text);
+      gallery.appendChild(p);
     });
-
   });
 }
-};
 
-  <!DOCTYPE html>
-<html>
-<head>
-  <title>About Us</title>
-</head>
-<body>
-
-<h1>About Us</h1>
-<p>Our leadership:</p>
-     body {
-      font-family: Arial;
-      margin: 0;
-      background-color: #f2f2f2;
-    }
-
-    /* 🔝 导航栏 */
-    .navbar {
-      background-color: #333;
-      padding: 15px;
-      text-align: center;
-    }
-
-    .navbar a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-size: 18px;
-    }
-
-    .navbar a:hover {
-      text-decoration: underline;
-    }
-
-    /* 👤 个人卡片 */
-    .card {
-      width: 350px;
-      margin: 50px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .card h2 {
-      margin: 15px 0 10px;
-    }
-
-    .card p {
-      color: gray;
-    }
-  </style>
-</head>
-
-<body>
-
-<!-- 🔝 导航栏 -->
-<div class="navbar">
-  <a href="#">Home</a>
-  <a href="#about">About Us</a>
-</div>
-
-<!-- 👤 About 区域 -->
-<div id="about" class="card">
-
-  <img src="photo.jpg" alt="My Photo">
-
-  <h2>Your Name</h2>
-  <p>Environmental Science Student 🌿</p>
-  <p>I love nature and want to protect the Earth.</p>
-
-</div>
-
-<a href="index.html">Bsck to Main Page</a>
-
-</body>
-</html>
-
-<a href="about.html">
-  <button>About Us</button>
-</a>
-  
 </script>
 
 </body>
