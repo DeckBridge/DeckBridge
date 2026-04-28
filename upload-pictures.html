@@ -10,7 +10,6 @@ body {
   margin: 0;
   background: #f4f4f4;
 
-  /* ⭐ 整体居中 */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,6 +20,27 @@ h1 {
   margin-top: 40px;
   text-align: center;
 }
+
+.box {
+  background: white;
+  padding: 15px;
+  margin: 15px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+#gallery img {
+  margin: 10px;
+  border-radius: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Upload your pictures here!</h1>
 
 <!-- LOGIN -->
 <div class="box">
@@ -49,8 +69,6 @@ h1 {
 <div class="box">
   <h2>Gallery</h2>
   <div id="gallery"></div>
-</div>
-
 </div>
 
 <script type="module">
@@ -83,7 +101,6 @@ const userStatus = document.getElementById("userStatus");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 
-// ===== AUTH =====
 window.register = function () {
   createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value)
   .catch(err => alert(err.message));
@@ -94,7 +111,6 @@ window.login = function () {
   .catch(err => alert(err.message));
 };
 
-// ===== STATE =====
 onAuthStateChanged(auth, (user) => {
   if (user) {
     uid = user.uid;
@@ -107,7 +123,6 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-// ===== UPLOAD =====
 document.getElementById("fileInput").addEventListener("change", async function () {
 
   if (!uid) {
@@ -139,7 +154,6 @@ document.getElementById("fileInput").addEventListener("change", async function (
   document.getElementById("preview").src = data.secure_url;
 });
 
-// ===== LOAD =====
 function loadImages() {
   onValue(ref(db, "users/" + uid + "/images"), (snapshot) => {
 
@@ -158,3 +172,7 @@ function loadImages() {
   });
 }
 
+</script>
+
+</body>
+</html>
