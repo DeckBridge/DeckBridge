@@ -9,14 +9,16 @@ body {
   font-family: Arial;
   margin: 0;
   background: #f2f2f2;
+  align-items: center;
 }
 
 /* 🔝 NAVBAR (目录) */
 .navbar {
   display: flex;
   gap: 20px;
-  padding: 15px;
+  padding: 20px;
   background: #333;
+  align-items: center;
 }
 
 .navbar a {
@@ -51,7 +53,6 @@ body {
 <div class="navbar">
   <a href="index.html">Home</a>
   <a href="about.html">About Us</a>
-  <a href="admin.html">Admin</a>
 </div>
 
 <div class="container">
@@ -138,7 +139,7 @@ onAuthStateChanged(auth, (user) => {
     uid = user.uid;
     userEmail = user.email;
 
-    userStatus.innerText = "Logged in: " + userEmail;
+    userStatus.innerText = "Logged in as: " + userEmail;
     loadImages();
   } else {
     userStatus.innerText = "Not logged in";
@@ -149,7 +150,7 @@ onAuthStateChanged(auth, (user) => {
 document.getElementById("fileInput").addEventListener("change", async function () {
 
   if (!uid) {
-    alert("Please log in first");
+    alert("Log in to upload picture");
     return;
   }
 
