@@ -2,13 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-  
-  <div class="navbar">
-  <a href="index.html">Home</a>
-  <a href="about.html">About Us</a>
-  <a href="physics.html">Physics</a>
-  <a href="envisci.html">Environmental Science</a>
-</div>
+
   
 <title>About Us</title>
 
@@ -19,11 +13,19 @@ body {
   background: #f4f4f4;
 }
 
-  .navbar a {
+  .navbar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  background: #333;
+  padding: 15px;
+}
+
+.navbar a {
   color: white;
   text-decoration: none;
   transition: 0.3s;
-  display: inline-block; /* 让transform生效更稳定 */
+  display: inline-block;
 }
 
 .navbar a:hover {
@@ -80,21 +82,19 @@ body {
   color: gray;
 }
 
-/* 按钮 */
-.back.btn {
-  display: inline-block;
-  background: white;
-  color: black;
-  padding: 10px 15px;
-  text-decoration: none;
-  border-radius: 8px;
-}
 </style>
 
 </head>
 
 <body>
 
+  <div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="physics.html">Physics</a>
+  <a href="envisci.html">Environmental Science</a>
+</div>
+  
 <div class="header">
   <h1>About Us</h1>
 </div>
@@ -121,9 +121,6 @@ body {
 
 </div>
 
-<a href="index.html" class="back btn">
-  <button>Back to Main Page</button>
-</a>
 
 </body>
 </html>
