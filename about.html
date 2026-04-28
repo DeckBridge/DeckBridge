@@ -13,72 +13,63 @@ body {
 
 /* 顶部 */
 .header {
-  text-align: center;
   background: #2c3e50;
   color: white;
   padding: 20px;
 }
 
-/* 容器 */
+/* 🔥 全部靠左 */
 .container {
-  width: 60%;
-  margin: 20px auto;
+  width: 100%;
+  padding: 20px;
 }
 
-/* 每个人卡片（全部直接展示） */
+/* 卡片 */
 .card {
   display: flex;
   align-items: center;
   gap: 20px;
+
   background: white;
   padding: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 /* 头像 */
 .card img {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-/* 信息 */
+/* 文本 */
 .info {
   display: flex;
   flex-direction: column;
 }
 
 .name {
-  font-size: 18px;
   font-weight: bold;
 }
 
 .role {
-  color: gray;
-  font-size: 14px;
-}
-
-.email {
   font-size: 13px;
-  color: #555;
-  margin-top: 3px;
+  color: gray;
 }
 
-/* 返回按钮 */
-.back {
-  text-align: center;
-  margin: 30px;
+/* 🔙 按钮 */
+.nav {
+  padding: 10px 20px;
+  background: #eee;
 }
 
-.back a {
+.nav a {
+  margin-right: 15px;
   text-decoration: none;
-  padding: 10px 15px;
-  background: #333;
-  color: white;
-  border-radius: 5px;
+  color: black;
 }
 </style>
 </head>
@@ -87,36 +78,35 @@ body {
 
 <div class="header">
   <h1>About Us</h1>
-  <p>Environmental Science Team 🌍</p>
+</div>
+
+<!-- 🔥 导航 -->
+<div class="nav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="admin.html">Admin Panel</a>
 </div>
 
 <div class="container">
 
-  <!-- 👤 成员1 -->
   <div class="card">
     <img src="https://via.placeholder.com/100">
     <div class="info">
       <div class="name">Emily Chen</div>
       <div class="role">Co-founder</div>
-      <div class="email">emily@gmail.com</div>
+      <div>emily@gmail.com</div>
     </div>
   </div>
 
-  <!-- 👤 成员2 -->
   <div class="card">
     <img src="https://via.placeholder.com/100">
     <div class="info">
       <div class="name">Gia Jing</div>
       <div class="role">Co-founder</div>
-      <div class="email">giajing3@gmail.com</div>
+      <div>giajing3@gmail.com</div>
     </div>
   </div>
 
-</div>
-
-<!-- 🔙 返回主页 -->
-<div class="back">
-  <a href="index.html">Back to Main Page</a>
 </div>
 
 </body>
