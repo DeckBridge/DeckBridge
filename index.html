@@ -1,63 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Environmental Science</title>
-
-  <style>
-    body {
-      font-family: Arial;
-      text-align: center;
-      background-color: #f2f2f2;
-      padding: 50px;
-    }
-
-    h1 { color: blue; }
-
-    .navbar {
-      background-color: #333;
-      padding: 15px;
-    }
-
-    .navbar a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-size: 18px;
-    }
-  </style>
-</head>
-
-<body>
-
-<!-- 🔝 导航 -->
-<div class="navbar">
-  <a href="index.html">Home</a>
-  <a href="about.html">About Us</a>
-</div>
-
-<h1>Welcome!</h1>
-<p>This is a site for environmental science</p>
-
-<h2>Login System</h2>
-
-<input id="email" placeholder="email">
-<input id="password" placeholder="password">
-
-<button onclick="register()">Sign Up</button>
-<button onclick="login()">Log In</button>
-
-<p id="userStatus">Please log in</p>
-
-<h2>Upload Image</h2>
-
-<input type="file" id="fileInput">
-<p id="status"></p>
-
-<img id="preview" width="300">
-
-<div id="gallery"></div>
-
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
@@ -65,42 +5,66 @@ import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebas
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "你的key",
-  authDomain: "xxx.firebaseapp.com",
-  databaseURL: "xxx",
-  projectId: "xxx",
-  storageBucket: "xxx",
-  messagingSenderId: "xxx",
-  appId: "xxx"
+  apiKey: "AIzaSyCg6tSHCPJqgTXo3QX1DEwgdROLonj9p20",
+  authDomain: "science-af1d8.firebaseapp.com",
+  databaseURL: "https://science-af1d8-default-rtdb.firebaseio.com",
+  projectId: "science-af1d8",
+  storageBucket: "science-af1d8.firebasestorage.app",
+  messagingSenderId: "779390611141",
+  appId: "1:779390611141:web:02c169354a1e8dbf4f0aac",
+  measurementId: "G-0SMFGP5P1X"
 };
 
+// ===== 初始化 =====
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const auth = getAuth(app);
 
+// ===== Cloudinary（这里填你的） =====
 const cloudName = "dfc4j6dae";
 const uploadPreset = "Upload_Picture";
 
+// ===== 获取 DOM =====
+const userStatus = document.getElementById("userStatus");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+
 let uid = null;
-let email = null;
+let userEmail = null;
 
+// ===== 注册 =====
 window.register = function () {
-  createUserWithEmailAndPassword(auth, email.value, password.value);
+  createUserWithEmailAndPassword(
+    auth,
+    emailInput.value,
+    passwordInput.value
+  );
 };
 
+// ===== 登录 =====
 window.login = function () {
-  signInWithEmailAndPassword(auth, email.value, password.value);
+  signInWithEmailAndPassword(
+    auth,
+    emailInput.value,
+    passwordInput.value
+  );
 };
 
+// ===== 登录状态监听 =====
 onAuthStateChanged(auth, (user) => {
   if (user) {
     uid = user.uid;
-    email = user.email;
-    userStatus.innerText = "Logged in: " + email;
+    userEmail = user.email;
+
+    userStatus.innerText = "Logged in: " + userEmail;
+
     loadImages();
+  } else {
+    userStatus.innerText = "Not logged in";
   }
 });
 
+// ===== 上传 =====
 document.getElementById("fileInput").addEventListener("change", async function () {
 
   if (!uid) {
@@ -114,23 +78,29 @@ document.getElementById("fileInput").addEventListener("change", async function (
   formData.append("file", file);
   formData.append("upload_preset", uploadPreset);
 
-  const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-    method: "POST",
-    body: formData
-  });
+  const res = await fetch(
+    `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+    {
+      method: "POST",
+      body: formData
+    }
+  );
 
   const data = await res.json();
 
   push(ref(db, "users/" + uid + "/images"), {
     url: data.secure_url,
-    email: email
+    email: userEmail
   });
 
-  preview.src = data.secure_url;
+  document.getElementById("preview").src = data.secure_url;
 });
 
+// ===== 加载图片 =====
 function loadImages() {
   onValue(ref(db, "users/" + uid + "/images"), (snapshot) => {
+
+    const gallery = document.getElementById("gallery");
     gallery.innerHTML = "";
 
     snapshot.forEach(child => {
@@ -150,6 +120,3 @@ function loadImages() {
 }
 
 </script>
-
-</body>
-</html>
