@@ -7,89 +7,78 @@
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   background: #f4f4f4;
 }
 
-/* 顶部标题 */
+/* 顶部 */
 .header {
-  padding: 20px;
   text-align: center;
   background: #2c3e50;
   color: white;
+  padding: 20px;
 }
 
-/* 主体左右布局 */
+/* 容器 */
 .container {
-  display: flex;
-  height: calc(100vh - 80px);
+  width: 60%;
+  margin: 20px auto;
 }
 
-/* 左侧列表 */
-.left {
-  width: 40%;
-  background: #ffffff;
-  overflow-y: auto;
-  border-right: 1px solid #ddd;
-}
-
-/* 每一个成员（横向卡片） */
-.person {
+/* 每个人卡片（全部直接展示） */
+.card {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
+  background: white;
   padding: 15px;
-  border-bottom: 1px solid #eee;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.person:hover {
-  background: #f0f0f0;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 /* 头像 */
-.person img {
-  width: 55px;
-  height: 55px;
+.card img {
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-/* 名字 + 信息 */
+/* 信息 */
 .info {
   display: flex;
   flex-direction: column;
 }
 
 .name {
+  font-size: 18px;
   font-weight: bold;
 }
 
 .role {
-  font-size: 13px;
   color: gray;
+  font-size: 14px;
 }
 
-/* 右侧内容 */
-.right {
-  flex: 1;
-  padding: 30px;
+.email {
+  font-size: 13px;
+  color: #555;
+  margin-top: 3px;
 }
 
-/* 右侧展示卡 */
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  width: 300px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+/* 返回按钮 */
+.back {
+  text-align: center;
+  margin: 30px;
 }
 
-.card img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
+.back a {
+  text-decoration: none;
+  padding: 10px 15px;
+  background: #333;
+  color: white;
+  border-radius: 5px;
 }
 </style>
 </head>
@@ -98,53 +87,37 @@ body {
 
 <div class="header">
   <h1>About Us</h1>
-  <p>We are an environmental science team 🌍</p>
+  <p>Environmental Science Team 🌍</p>
 </div>
 
 <div class="container">
 
-  <!-- 左侧 -->
-  <div class="left">
-
-    <div class="person" onclick="showPerson('Emily Chen','co-founder','emily.jpg','emily@gmail.com')">
-      <img src="https://via.placeholder.com/100">
-      <div class="info">
-        <div class="name">Emily Chen</div>
-        <div class="role">Co-founder</div>
-      </div>
+  <!-- 👤 成员1 -->
+  <div class="card">
+    <img src="https://via.placeholder.com/100">
+    <div class="info">
+      <div class="name">Emily Chen</div>
+      <div class="role">Co-founder</div>
+      <div class="email">emily@gmail.com</div>
     </div>
-
-    <div class="person" onclick="showPerson('Gia Jing','co-founder','gia.jpg','giajing3@gmail.com')">
-      <img src="https://via.placeholder.com/100">
-      <div class="info">
-        <div class="name">Gia Jing</div>
-        <div class="role">Co-founder</div>
-      </div>
-    </div>
-
   </div>
 
-  <!-- 右侧 -->
-  <div class="right">
-
-    <div class="card" id="detail">
-      <p>Click a member on the left</p>
+  <!-- 👤 成员2 -->
+  <div class="card">
+    <img src="https://via.placeholder.com/100">
+    <div class="info">
+      <div class="name">Gia Jing</div>
+      <div class="role">Co-founder</div>
+      <div class="email">giajing3@gmail.com</div>
     </div>
-
   </div>
 
 </div>
 
-<script>
-function showPerson(name, role, img, email) {
-  document.getElementById("detail").innerHTML = `
-    <img src="${img}">
-    <h2>${name}</h2>
-    <p><b>Role:</b> ${role}</p>
-    <p><b>Email:</b> ${email}</p>
-  `;
-}
-</script>
+<!-- 🔙 返回主页 -->
+<div class="back">
+  <a href="index.html">Back to Main Page</a>
+</div>
 
 </body>
 </html>
