@@ -27,6 +27,27 @@ body {
   transform: scale(1.2);
   text-decoration: underline;
 }
+
+  .navbar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  background: #333;
+  padding: 15px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+.navbar a:hover {
+  transform: scale(1.2);
+  text-decoration: underline;
+}
+
   
 /* 标题 */
 h1 {
@@ -54,6 +75,13 @@ h1 {
 
 <body>
 
+  <div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="physics.html">Physics</a>
+  <a href="envisci.html">Environmental Science</a>
+</div>
+  
 <h1>Environmental Science</h1>
 
 <div class="upload-box">
