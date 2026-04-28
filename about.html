@@ -9,6 +9,114 @@
 <h1>About Us</h1>
 <p>We are an environmental science team 🌍</p>
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Leadership Page</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  display: flex;
+  height: 100vh;
+}
+
+/* 左边栏 */
+.sidebar {
+  width: 30%;
+  background: #222;
+  color: white;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* 右边内容 */
+.main {
+  flex: 1;
+  background: #f2f2f2;
+  padding: 30px;
+}
+
+/* 每个成员卡片 */
+.person {
+  background: #333;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.person img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.person p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+/* 右侧展示卡 */
+.detail-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.detail-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 左边 leadership -->
+<div class="sidebar">
+  <h2>Leadership</h2>
+
+  <div class="person" onclick="showPerson('Alex','alex@email.com','https://via.placeholder.com/300')">
+    <p><b>Alex</b></p>
+    <p>alex@email.com</p>
+  </div>
+
+  <div class="person" onclick="showPerson('Lisa','lisa@email.com','https://via.placeholder.com/300')">
+    <p><b>Lisa</b></p>
+    <p>lisa@email.com</p>
+  </div>
+
+  <div class="person" onclick="showPerson('John','john@email.com','https://via.placeholder.com/300')">
+    <p><b>John</b></p>
+    <p>john@email.com</p>
+  </div>
+</div>
+
+<!-- 右边内容 -->
+<div class="main">
+  <h2>Member Details</h2>
+
+  <div class="detail-card" id="detail">
+    <p>Click a member on the left</p>
+  </div>
+</div>
+
+<script>
+function showPerson(name, email, img) {
+  document.getElementById("detail").innerHTML = `
+    <img src="${img}">
+    <h3>${name}</h3>
+    <p>Email: ${email}</p>
+  `;
+}
+</script>
+
+</body>
+</html>
+  
 <a href="index.html">Back to Home</a>
 
 </body>
