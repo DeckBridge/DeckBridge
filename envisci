@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>About Us</title>
+  
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f4f4f4;
+}
+
+  
+/* 顶部 */
+.header {
+  background: #2c3e50;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+/* 🔥 全部靠左 */
+.container {
+  width: 30%;
+  padding: 20px;
+}
+
+/* 卡片 */
+.card {
+  display: flex;
+  align-items: left;
+  gap: 50px;
+
+  background: white;
+  padding: 15px;
+  margin: 20px;
+
+  border-radius: 10px;
+}
+
+/* 头像 */
+.card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 文本 */
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.role {
+  font-size: 13px;
+  color: gray;
+}
+
+/* 🔙 按钮 */
+.nav {
+  padding: 10px 20px;
+  background: #eee;
+}
+
+.nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: black;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>About Us</h1>
+</div>
+ <style>
+   h1 {
+     text-align: center;
+   }
+<style>
+
+<div class="container">
+
+  <div class="card">
+    <img src="https://via.placeholder.com/100">
+    <div class="info">
+      <div class="name">Emily Chen</div>
+      <div class="role">Co-founder</div>
+      <div>emily@gmail.com</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/100">
+    <div class="info">
+      <div class="name">Gia Jing</div>
+      <div class="role">Co-founder</div>
+      <div>giajing3@gmail.com</div>
+    </div>
+  </div>
+
+</div>
+
+<a href="index.html" class="back btn">
+  <button>Back to Main Page</button>
+</a>
+
+  <style>
+    .back.btn {
+      align-items: flex-start;
+      justify-content: flex-start;
+
+    background: white;
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    }
+  </style>
+  
+  
+</body>
+</html>
