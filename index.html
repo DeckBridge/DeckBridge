@@ -42,11 +42,6 @@ p {
 }
   
 </style>
-#gallery img {
-  margin: 10px;
-  border-radius: 10px;
-}
-</style>
 </head>
 
 <body>
@@ -204,11 +199,7 @@ function loadImages() {
       img.src = d.url;
       img.width = 200;
 
-      const p = document.createElement("p");
-      p.innerText = d.email;
-
       gallery.appendChild(img);
-      gallery.appendChild(p);
     });
   });
 }
