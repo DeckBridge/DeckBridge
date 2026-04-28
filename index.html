@@ -2,38 +2,94 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Science Site</title>
+<title>Environmental Science</title>
+
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f2f2f2;
+}
+
+/* 🔝 NAVBAR (目录) */
+.navbar {
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+  background: #333;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+/* PAGE */
+.container {
+  padding: 20px;
+}
+
+/* LOGIN BOX */
+.box {
+  background: white;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+/* GALLERY */
+#gallery img {
+  margin: 10px;
+  border-radius: 10px;
+}
+</style>
 </head>
 
 <body>
 
-<h1>Environmental Science</h1>
+<!-- 🔝 NAVIGATION (你的目录) -->
+<div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="admin.html">Admin</a>
+</div>
+
+<div class="container">
+
+<h1>Welcome!</h1>
+
+<p>This is a site for environmental science</p>
 
 <!-- LOGIN -->
-<h2>Login System</h2>
+<div class="box">
+  <h2>Login System</h2>
 
-<input id="email" placeholder="email">
-<input id="password" placeholder="password">
+  <input id="email" placeholder="email">
+  <input id="password" placeholder="password">
 
-<button onclick="register()">Sign Up</button>
-<button onclick="login()">Log In</button>
+  <button onclick="register()">Sign Up</button>
+  <button onclick="login()">Log In</button>
 
-<p id="userStatus">Not logged in</p>
-
-<hr>
+  <p id="userStatus">Not logged in</p>
+</div>
 
 <!-- UPLOAD -->
-<h2>Upload Image</h2>
+<div class="box">
+  <h2>Upload Image</h2>
 
-<input type="file" id="fileInput">
-<p id="status"></p>
+  <input type="file" id="fileInput">
+  <p id="status"></p>
 
-<img id="preview" width="200">
-
-<hr>
+  <img id="preview" width="200">
+</div>
 
 <!-- GALLERY -->
-<div id="gallery"></div>
+<div class="box">
+  <h2>Gallery</h2>
+  <div id="gallery"></div>
+</div>
+
+</div>
 
 <script type="module">
 
@@ -61,7 +117,6 @@ const uploadPreset = "Upload_Picture";
 let uid = null;
 let userEmail = null;
 
-// DOM (SAFE CHECK)
 const userStatus = document.getElementById("userStatus");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
@@ -84,7 +139,6 @@ onAuthStateChanged(auth, (user) => {
     userEmail = user.email;
 
     userStatus.innerText = "Logged in: " + userEmail;
-
     loadImages();
   } else {
     userStatus.innerText = "Not logged in";
@@ -114,11 +168,6 @@ document.getElementById("fileInput").addEventListener("change", async function (
   );
 
   const data = await res.json();
-
-  if (!data.secure_url) {
-    alert("Upload failed");
-    return;
-  }
 
   push(ref(db, "users/" + uid + "/images"), {
     url: data.secure_url,
