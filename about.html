@@ -2,78 +2,73 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-  
 <title>About Us</title>
 
 <style>
 body {
   margin: 0;
   font-family: Arial;
-  background: #f4f4f4;
+  background: #f8fafc;
 }
 
-  .navbar {
+/* navbar */
+.navbar {
   display: flex;
   justify-content: center;
   gap: 30px;
-  background: #333;
+  background: #93c5fd;
   padding: 15px;
   width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .navbar a {
   color: white;
   text-decoration: none;
   transition: 0.3s;
-  display: inline-block;
 }
 
 .navbar a:hover {
   transform: scale(1.2);
   text-decoration: underline;
 }
-  
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: #333;
+
+/* 标题 */
+.header {
+  text-align: left;
+  color: black;
+  font-size: 38px;
+  margin-left: 30px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 /* 容器 */
 .container {
   width: 30%;
-  padding: 20px;
+  padding: 0 20px;
+  margin-left: 30px;
 }
 
-  .header{
-    text-align: left;
-    color: black;
-    font-size: 45px;
-    margin-left: 30px;
-    margin-top: 40px;
-    margin-bottom: 30px;
-  }
-  
 /* 卡片 */
 .card {
   display: flex;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
 
   background: white;
-  padding: 15px;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  padding: 12px;
+  margin-bottom: 15px;
 
   border-radius: 10px;
 }
 
 /* 头像 */
 .card img {
-  width: 60px;
-  height: 60px;
+  width: 50px; /* ⭐ 小一点 */
+  height: 50px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -85,39 +80,41 @@ body {
 
 .name {
   font-weight: bold;
+  font-size: 14px;
 }
 
 .role {
-  font-size: 13px;
+  font-size: 12px;
   color: gray;
 }
 
+.school {
+  font-size: 12px;
+  color: gray;
+}
+
+/* footer */
 .footer {
   color: #828282;
-  text-align: central;
-  margin-left: 10px;
-  margin-top: 50px;
+  text-align: center; /* ✅ 修好 */
+  margin-top: 60px;
+  padding: 20px;
+  border-top: 1px solid #ddd;
 }
-  
-
-.container {
-  flex: 1;
-}
-  
 </style>
-
 </head>
 
 <body>
 
-  <div class="navbar">
+<div class="navbar">
   <a href="index.html">Home</a>
   <a href="about.html">About Us</a>
   <a href="physics.html">Physics</a>
   <a href="envisci.html">Environmental Science</a>
   <a href="upload-pictures.html">Upload Pictures</a>
 </div>
-  
+
+<!-- OUR LEADERSHIP -->
 <div class="header">
   <b>Our Leadership</b>
 </div>
@@ -129,7 +126,8 @@ body {
     <div class="info">
       <div class="name">Emily Chen</div>
       <div class="role">Co-founder</div>
-      <div>rqchen306@gmail.com</div>
+      <div class="school">blabla, NY</div>
+      <div style="font-size:12px;">rqchen306@gmail.com</div>
     </div>
   </div>
 
@@ -138,19 +136,28 @@ body {
     <div class="info">
       <div class="name">Gia Jing</div>
       <div class="role">Co-founder</div>
-      <div>giajing3@gmail.com</div>
+      <div class="school">The Lawrenceville School, NJ</div>
+      <div style="font-size:12px;">giajing3@gmail.com</div>
     </div>
   </div>
 
 </div>
 
-<div class="container">
-  blablabla
+<!-- OUR MISSION -->
+<div class="header">
+  <b>Our Mission</b>
 </div>
-  
+
+<div class="container">
+  <div style="font-size:14px;">
+    blablabla blablabla blablabla blablabla
+  </div>
+</div>
+
+
 <div class="footer">
   <p><b>DeckBridge</b></p>
-  <p>Site by Gia Jing</p>
+  <p style="opacity:0.6;">Site by Gia Jing</p>
 </div>
 
 </body>
