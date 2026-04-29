@@ -35,21 +35,30 @@ body {
   text-decoration: underline;
 }
 
+/* ⭐ NEW: layout */
+.main {
+  display: flex;
+  gap: 60px;
+  padding: 20px 30px;
+}
+
+/* left & right */
+.left, .right {
+  width: 30%;
+}
+
 /* 标题 */
 .header {
   text-align: left;
   color: black;
   font-size: 38px;
-  margin-left: 30px;
   margin-top: 40px;
   margin-bottom: 20px;
 }
 
 /* 容器 */
 .container {
-  width: 30%;
   padding: 0 20px;
-  margin-left: 30px;
 }
 
 /* 卡片 */
@@ -67,7 +76,7 @@ body {
 
 /* 头像 */
 .card img {
-  width: 50px; /* ⭐ 小一点 */
+  width: 50px;
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
@@ -93,10 +102,20 @@ body {
   color: gray;
 }
 
+/* ⭐ Mission block upgrade */
+.mission-box {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
 /* footer */
 .footer {
   color: #828282;
-  text-align: center; /* ✅ 修好 */
+  text-align: center;
   margin-top: 60px;
   padding: 20px;
   border-top: 1px solid #ddd;
@@ -114,46 +133,54 @@ body {
   <a href="upload-pictures.html">Upload Pictures</a>
 </div>
 
-<!-- OUR LEADERSHIP -->
-<div class="header">
-  <b>Our Leadership</b>
-</div>
+<!-- ⭐ MAIN FLEX -->
+<div class="main">
 
-<div class="container">
+  <!-- LEFT: LEADERSHIP -->
+  <div class="left">
+    <div class="header">
+      <b>Our Leadership</b>
+    </div>
 
-  <div class="card">
-    <img src="https://via.placeholder.com/100">
-    <div class="info">
-      <div class="name">Emily Chen</div>
-      <div class="role">Co-founder</div>
-      <div class="school">blabla, NY</div>
-      <div style="font-size:12px;">rqchen306@gmail.com</div>
+    <div class="container">
+
+      <div class="card">
+        <img src="https://via.placeholder.com/100">
+        <div class="info">
+          <div class="name">Emily Chen</div>
+          <div class="role">Co-founder</div>
+          <div class="school">blabla, NY</div>
+          <div style="font-size:12px;">rqchen306@gmail.com</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/100">
+        <div class="info">
+          <div class="name">Gia Jing</div>
+          <div class="role">Co-founder</div>
+          <div class="school">The Lawrenceville School, NJ</div>
+          <div style="font-size:12px;">giajing3@gmail.com</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <div class="card">
-    <img src="https://via.placeholder.com/100">
-    <div class="info">
-      <div class="name">Gia Jing</div>
-      <div class="role">Co-founder</div>
-      <div class="school">The Lawrenceville School, NJ</div>
-      <div style="font-size:12px;">giajing3@gmail.com</div>
+  <!-- RIGHT: MISSION -->
+  <div class="right">
+    <div class="header">
+      <b>Our Mission</b>
+    </div>
+
+    <div class="container">
+      <div class="mission-box">
+        blablabla blablabla blablabla blablabla
+      </div>
     </div>
   </div>
 
 </div>
-
-<!-- OUR MISSION -->
-<div class="header">
-  <b>Our Mission</b>
-</div>
-
-<div class="container">
-  <div style="font-size:14px;">
-    blablabla blablabla blablabla blablabla
-  </div>
-</div>
-
 
 <div class="footer">
   <p><b>DeckBridge</b></p>
