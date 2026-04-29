@@ -8,10 +8,10 @@ body {
   font-family: Arial;
   margin: 0;
   background: #f1f5f9;
+
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: stretch; 
 }
 
 /* navbar */
@@ -31,7 +31,6 @@ body {
   color: white;
   text-decoration: none;
   transition: 0.3s;
-  display: inline-block;
 }
 
 .navbar a:hover {
@@ -39,33 +38,31 @@ body {
   text-decoration: underline;
 }
 
+/* content */
+.container {
+  flex: 1; /* ⭐ pushes footer down */
+  padding: 20px;
+  color: #334155;
+  text-align: center;
+}
+
 /* text */
 h1 {
-  text-align: center;
+  margin-top: 40px;
 }
 
 p {
-  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-/* layout */
-.container {
-  padding: 20px;
-  color: #334155;
-}
-
+/* footer */
 .footer {
-  color: #828282;
-  text-align: left;
-  margin-left: 10px;
-  margin-top: 50px;
+  color: #64748b;
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #ddd;
 }
-  
-
-.container {
-  flex: 1;
-}
-  
 </style>
 </head>
 
@@ -88,6 +85,6 @@ p {
   <p><b>DeckBridge</b></p>
   <p>Site by Gia Jing</p>
 </div>
-  
+
 </body>
 </html>
