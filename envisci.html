@@ -8,18 +8,19 @@
 body {
   font-family: Arial;
   margin: 0;
-  background: #f4f4f4;
+  background: #f8fafc; /* ⭐ same as other page */
+
   display: flex;
   flex-direction: column;
-  align-items: center;
+  min-height: 100vh;
 }
 
-
-  .navbar {
+/* navbar */
+.navbar {
   display: flex;
   justify-content: center;
   gap: 30px;
-  background: #333;
+  background: #93c5fd; /* ⭐ blue */
   padding: 15px;
   width: 100%;
   position: sticky;
@@ -31,7 +32,6 @@ body {
   color: white;
   text-decoration: none;
   transition: 0.3s;
-  display: inline-block;
 }
 
 .navbar a:hover {
@@ -39,48 +39,46 @@ body {
   text-decoration: underline;
 }
 
-  
+/* 内容区域 */
+.container {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+}
+
 /* 标题 */
 h1 {
   margin-top: 40px;
-  text-align: center;
 }
 
+/* footer */
 .footer {
-  color: #828282;
-  text-align: left;
-  margin-left: 10px;
-  margin-top: 50px;
+  color: #64748b; /* ⭐ same softer gray */
+  text-align: center;
+  padding: 20px;
 }
-  
-
-.container {
-  flex: 1;
-}
-
 </style>
 </head>
 
 <body>
 
-  <div class="navbar">
+<div class="navbar">
   <a href="index.html">Home</a>
   <a href="about.html">About Us</a>
   <a href="physics.html">Physics</a>
   <a href="envisci.html">Environmental Science</a>
   <a href="upload-pictures">Upload Pictures</a>
 </div>
-  
-<h1>Environmental Science</h1>
 
 <div class="container">
-  Check the images above to see what you've collected so far!
+  <h1>Environmental Science</h1>
+  <p>Check the images above to see what you've collected so far!</p>
 </div>
-  
-  <div class="footer">
+
+<div class="footer">
   <p><b>DeckBridge</b></p>
   <p>Site by Gia Jing</p>
 </div>
-  
+
 </body>
 </html>
