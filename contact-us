@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Contact Us</title>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f1f5f9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* navbar */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px;
+  background: #93c5fd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  transform: scale(1.05);
+  text-decoration: underline;
+}
+
+/* dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 10px;
+  min-width: 160px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: #334155;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background: #f1f5f9;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* content */
+.container {
+  flex: 1;
+  padding: 40px;
+  text-align: center;
+}
+
+/* card */
+.card {
+  background: white;
+  padding: 25px;
+  margin: 20px auto;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+/* inputs */
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+/* button */
+button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2563eb;
+}
+
+/* footer */
+.footer {
+  color: #64748b;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+
+.footer p {
+  margin: 8px 0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- navbar -->
+<div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+
+  <div class="dropdown">
+    <a href="#">Deck ▾</a>
+    <div class="dropdown-content">
+      <a href="physics.html">Physics</a>
+      <a href="envisci.html">Environmental Science</a>
+    </div>
+  </div>
+
+  <a href="upload-pictures.html">Upload Pictures</a>
+</div>
+
+<!-- content -->
+<div class="container">
+  <h1>Contact Us</h1>
+
+  <div class="card">
+    <label>Name</label>
+    <input type="text" id="name" placeholder="Your name">
+
+    <label>Email</label>
+    <input type="email" id="email" placeholder="Your email">
+
+    <label>Message</label>
+    <textarea id="message" rows="5" placeholder="Write your message..."></textarea>
+
+    <button onclick="sendEmail()">Send Message</button>
+  </div>
+
+  <div class="card">
+    <b>Email:</b> deckbridge@email.com<br><br>
+    <b>Location:</b> New Jersey, USA
+  </div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+  <p><b>DeckBridge</b></p>
+  <p>Site by Gia Jing</p>
+</div>
+
+<!-- EmailJS script -->
+<script>
+(function(){
+  emailjs.init("YOUR_PUBLIC_KEY"); // ⭐ 换成你的
+})();
+
+function sendEmail() {
+  const params = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    message: document.getElementById("message").value,
+  };
+
+  emailjs.send("service_1ngugnc", "template_m9407nc", params)
+    .then(function() {
+      alert("Message sent!");
+    }, function() {
+      alert("Failed to send. Try again.");
+    });
+}
+</script>
+
+</body>
+</html>
