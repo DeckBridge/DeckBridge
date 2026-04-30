@@ -97,6 +97,31 @@ h1 {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.toc {
+  position: fixed;
+  left: 20px;
+  top: 120px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toc a {
+  text-decoration: none;
+  color: #3b82f6;
+  font-size: 14px;
+}
+
+.toc a:hover {
+  text-decoration: underline;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 </style>
 </head>
 
@@ -119,6 +144,19 @@ h1 {
 <div class="container">
   <h1>Physics</h1>
   <p>Check the images above to see what you've collected so far!</p>
+</div>
+
+<div class="toc">
+  <a href="#theme1">Theme 1</a>
+  <a href="#theme2">Theme 2</a>
+</div>
+
+<div id="theme1">
+  <h2>Theme 1</h2>
+</div>
+
+<div id="theme2">
+  <h2>Theme 2</h2>
 </div>
 
 <div class="footer">
