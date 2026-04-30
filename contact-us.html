@@ -177,10 +177,6 @@ button:hover {
 
 <!-- EmailJS script -->
 <script>
-(function(){
-  emailjs.init("X-YzDtMwqb-jGtpzD");
-})();
-
 function sendEmail() {
   const params = {
     name: document.getElementById("name").value,
@@ -188,6 +184,10 @@ function sendEmail() {
     message: document.getElementById("message").value,
   };
 
+  // 1️⃣ send to YOU
+  emailjs.send("service_1ngugnc", "template_ang4b1q", params);
+
+  // 2️⃣ auto reply to USER
   emailjs.send("service_1ngugnc", "template_m9407nc", params)
     .then(function() {
       alert("Message sent!");
