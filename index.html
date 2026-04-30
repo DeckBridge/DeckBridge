@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 <style>
 body {
   font-family: Arial;
@@ -39,20 +42,63 @@ body {
 
 /* content */
 .container {
-  flex: 1; /* ⭐ pushes footer down */
-  padding: 20px;
+  flex: 1;
+  padding: 40px;
   color: #334155;
-  text-align: center;
 }
 
-/* text */
-h1 {
-  margin-top: 40px;
+/* ⭐ 横向布局 */
+.split {
+  display: flex;
+  gap: 30px;
+  align-items: stretch;
 }
 
-p {
-  max-width: 600px;
-  margin: 0 auto;
+/* 左边卡片 */
+.card {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 数字样式 */
+.big {
+  font-size: 48px;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+.small {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* 分隔线 */
+.divider {
+  width: 1px;
+  background: #ddd;
+  margin: 0 20px;
+}
+
+/* 横向 stats */
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* 右边地图 */
+.map {
+  flex: 1;
+  height: 300px;
+  border-radius: 12px;
 }
 
 /* footer */
@@ -61,9 +107,10 @@ p {
   padding: 20px;
   text-align: center;
   border-top: 1px solid #ddd;
-  p {
-    margin: 10px 0;
-  }
+}
+
+.footer p {
+  margin: 10px 0;
 }
 </style>
 </head>
@@ -79,14 +126,54 @@ p {
 </div>
 
 <div class="container">
-  <h1>Welcome!</h1>
-  <p>This is a site for environmental science</p>
+
+<h1 style="text-align:center;">Welcome!</h1>
+
+<div class="split">
+
+  <!-- 左边 -->
+  <div class="card">
+    <div>We have been distributed in</div>
+
+    <div class="stats">
+      <div>
+        <div class="big">3</div>
+        <div class="small">states</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <div class="big">6</div>
+        <div class="small">libraries / museums / after-school programs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 右边 -->
+  <div id="map" class="map"></div>
+
+</div>
+
 </div>
 
 <div class="footer">
   <p><b>DeckBridge</b></p>
   <p>Site by Gia Jing</p>
 </div>
+
+<script>
+var map = L.map('map').setView([39.5, -98.35], 4);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 18,
+}).addTo(map);
+
+/* 标点 */
+L.marker([40.7128, -74.0060]).addTo(map).bindPopup("New York");
+L.marker([34.0522, -118.2437]).addTo(map).bindPopup("Los Angeles");
+L.marker([41.8781, -87.6298]).addTo(map).bindPopup("Chicago");
+</script>
 
 </body>
 </html>
