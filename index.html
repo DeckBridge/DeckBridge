@@ -45,6 +45,7 @@ body {
   flex: 1;
   padding: 40px;
   color: #334155;
+  margin: 0 auto;
 }
 
 /* ⭐ 横向布局 */
@@ -182,9 +183,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 /* 标点 */
-L.marker([40.7128, -74.0060]).addTo(map).bindPopup("New York");
-L.marker([34.0522, -118.2437]).addTo(map).bindPopup("Los Angeles");
-L.marker([41.8781, -87.6298]).addTo(map).bindPopup("Chicago");
+L.marker([40.7128, -74.0060]).addTo(map).bindPopup("NY");
+L.marker([40.29414, -74.72500]).addTo(map).bindPopup("NJ");
 </script>
 
 </body>
