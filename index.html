@@ -1,21 +1,179 @@
-<div class="card">
-  <div style="font-size:16px;">
-    We have been distributed in
-  </div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
 
-  <div class="stats">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-    <div class="stat-item">
-      <div class="big">3</div>
-      <div class="small">states</div>
-    </div>
+<style>
+body {
+  font-family: Arial;
+  background: #f1f5f9;
+  margin: 0px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-    <div class="divider"></div>
+/* navbar */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px;
+  background: #93c5fd;
 
-    <div class="stat-item">
-      <div class="big">6</div>
-      <div class="small">libraries / museums / after-school programs</div>
-    </div>
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-  </div>
+.navbar a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  transform: scale(1.2);
+  text-decoration: underline;
+}
+
+/* content */
+.container {
+  flex: 1;
+  padding: 40px;
+  color: #334155;
+}
+
+/* ⭐ 横向布局 */
+.split {
+  display: flex;
+  gap: 30px;
+  align-items: stretch;
+}
+
+/* 左边卡片 */
+.card {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 数字样式 */
+.big {
+  font-size: 48px;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+.small {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* 分隔线 */
+.divider {
+  width: 1px;
+  background: #ddd;
+  margin: 0 20px;
+}
+
+/* 横向 stats */
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* 右边地图 */
+.map {
+  flex: 1;
+  height: 300px;
+  border-radius: 12px;
+}
+
+/* footer */
+.footer {
+  color: #64748b;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+
+.footer p {
+  margin: 10px 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="physics.html">Physics</a>
+  <a href="envisci.html">Environmental Science</a>
+  <a href="upload-pictures.html">Upload Pictures</a>
 </div>
+
+<div class="container">
+
+<h1 style="text-align:center;">Welcome!</h1>
+
+<div class="split">
+
+  <!-- 左边 -->
+  <div class="card">
+    <div>We have been distributed in</div>
+
+    <div class="stats">
+      <div>
+        <div class="big">3</div>
+        <div class="small">states</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <div class="big">6</div>
+        <div class="small">libraries / museums / after-school programs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 右边 -->
+  <div id="map" class="map"></div>
+
+</div>
+
+</div>
+
+<div class="footer">
+  <p><b>DeckBridge</b></p>
+  <p>Site by Gia Jing</p>
+</div>
+
+<script>
+var map = L.map('map').setView([39.5, -98.35], 4);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 18,
+}).addTo(map);
+
+/* 标点 */
+L.marker([40.7128, -74.0060]).addTo(map).bindPopup("New York");
+L.marker([34.0522, -118.2437]).addTo(map).bindPopup("Los Angeles");
+L.marker([41.8781, -87.6298]).addTo(map).bindPopup("Chicago");
+</script>
+
+</body>
+</html>
