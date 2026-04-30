@@ -67,33 +67,41 @@ body {
   justify-content: center;
 }
 
-/* 数字样式 */
+/* stats 容器 */
+.stats {
+  display: flex;
+  justify-content: space-between; /* ⭐ 撑满 */
+  align-items: center;
+  margin-top: 30px;
+}
+
+/* 每一组 */
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 大数字 */
 .big {
   font-size: 48px;
   color: #3b82f6;
   font-weight: bold;
 }
 
+/* 右边文字 */
 .small {
   font-size: 14px;
   color: #64748b;
+  max-width: 120px;
 }
 
 /* 分隔线 */
 .divider {
   width: 1px;
+  height: 50px;
   background: #ddd;
-  margin: 0 20px;
 }
-
-/* 横向 stats */
-.stats {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-
 /* 右边地图 */
 .map {
   flex: 1;
@@ -132,23 +140,27 @@ body {
 <div class="split">
 
   <!-- 左边 -->
-  <div class="card">
-    <div>We have been distributed in</div>
-
-    <div class="stats">
-      <div>
-        <div class="big">3</div>
-        <div class="small">states</div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div>
-        <div class="big">6</div>
-        <div class="small">libraries / museums / after-school programs</div>
-      </div>
-    </div>
+<div class="card">
+  <div style="font-size:16px;">
+    We have been distributed in
   </div>
+
+  <div class="stats">
+
+    <div class="stat-item">
+      <div class="big">3</div>
+      <div class="small">states</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="stat-item">
+      <div class="big">6</div>
+      <div class="small">libraries / museums / after-school programs</div>
+    </div>
+
+  </div>
+</div>
 
   <!-- 右边 -->
   <div id="map" class="map"></div>
