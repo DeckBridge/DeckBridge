@@ -45,13 +45,12 @@ body {
   flex: 1;
   padding: 40px;
   color: #334155;
-  margin: 0 auto;
 }
 
 /* ⭐ 横向布局 */
 .split {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   align-items: stretch;
 }
 
@@ -183,7 +182,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 /* 标点 */
-L.marker([40.7128, -74.0060]).addTo(map).bindPopup("NY");
+L.marker([40.7922, 73.6920]).addTo(map).bindPopup("NY");
 L.marker([40.29414, -74.72500]).addTo(map).bindPopup("NJ");
 </script>
 
