@@ -166,7 +166,6 @@ button:hover {
 
   <div class="card">
     <b>Email:</b> deckbridge@email.com<br><br>
-    <b>Location:</b> New Jersey, USA
   </div>
 </div>
 
@@ -184,7 +183,11 @@ function sendEmail() {
     email: document.getElementById("email").value,
     message: document.getElementById("message").value,
   };
-
+  
+(function(){
+  emailjs.init("X-YzDtMwqb-jGtpzD");  // your public key
+})();
+  
   // 1️⃣ send to YOU
   emailjs.send("service_1ngugnc", "template_ang4b1q", params);
 
