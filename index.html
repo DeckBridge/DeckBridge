@@ -125,6 +125,44 @@ body {
   font-size: 10px;
   opacity: 0.5;
 }
+
+/* dropdown 外层 */
+.dropdown {
+  position: relative;
+}
+
+/* 下拉内容（默认隐藏） */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;        /* 出现在下面 */
+  left: 0;
+
+  background: white;
+  min-width: 180px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+
+  overflow: hidden;
+}
+
+/* 每个选项 */
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: #334155;
+  text-decoration: none;
+}
+
+/* hover 效果 */
+.dropdown-content a:hover {
+  background: #f1f5f9;
+}
+
+/* ⭐ hover 显示 */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
   
 </style>
 </head>
@@ -134,11 +172,22 @@ body {
 <div class="navbar">
   <a href="index.html">Home</a>
   <a href="about.html">About Us</a>
-  <a href="physics.html">Physics</a>
-  <a href="envisci.html">Environmental Science</a>
+  <div class="dropdown">
+    <a href="#">Deck ▾</a>
+
+    <div class="dropdown-content">
+      <a href="physics.html">Physics</a>
+      <a href="envisci.html">Environmental Science</a>
+    </div>
+  </div>
   <a href="upload-pictures.html">Upload Pictures</a>
 </div>
+  
+</div>
 
+
+
+  
 <div class="container">
 
 <h1 style="text-align:center;">Welcome!</h1>
