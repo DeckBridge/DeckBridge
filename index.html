@@ -47,11 +47,39 @@ body {
   color: #334155;
 }
 
+/* HERO */
+.hero {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: #3b82f6;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
 /* ⭐ 横向布局 */
 .split {
   display: flex;
   gap: 30px;
   align-items: stretch;
+  margin-top: 40px;
 }
 
 /* 卡片 */
@@ -61,10 +89,6 @@ body {
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 /* stats */
@@ -102,66 +126,24 @@ body {
 /* map */
 .map {
   flex: 1;
-  height: 300px;
+  height: 320px;
   border-radius: 12px;
 }
 
-/* ⭐ 新增 section 标题 */
-.section-title {
-  text-align: center;
-  font-size: 22px;
+/* decks section */
+.decks {
   margin-top: 60px;
 }
 
-/* ⭐ 按钮 */
-.btns {
+.decks h2 {
   text-align: center;
-  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
-.btn {
-  display: inline-block;
-  padding: 10px 18px;
-  margin: 5px;
-  border-radius: 8px;
-  background: #3b82f6;
-  color: white;
-  text-decoration: none;
-}
-
-.btn:hover {
-  background: #2563eb;
-}
-
-/* ⭐ 功能卡片 */
-.features {
-  display: flex;
-  gap: 20px;
-  margin-top: 30px;
-}
-
-.feature-card {
-  flex: 1;
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-/* ⭐ deck cards */
-.decks {
-  display: flex;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.deck-card {
-  flex: 1;
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+.deck-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 /* footer */
@@ -174,11 +156,6 @@ body {
 
 .footer p {
   margin: 10px 0;
-}
-
-.leaflet-control-attribution {
-  font-size: 10px;
-  opacity: 0.5;
 }
 
 /* dropdown */
@@ -195,7 +172,6 @@ body {
   min-width: 180px;
   border-radius: 10px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  overflow: hidden;
 }
 
 .dropdown-content a {
@@ -207,7 +183,6 @@ body {
 
 .dropdown-content a:hover {
   background: #f1f5f9;
-  transform: scale(1.05);
 }
 
 .dropdown:hover .dropdown-content {
@@ -221,6 +196,7 @@ body {
 <div class="navbar">
   <a href="index.html">Home</a>
   <a href="about.html">About Us</a>
+
   <div class="dropdown">
     <a href="#">Deck ▾</a>
     <div class="dropdown-content">
@@ -228,29 +204,25 @@ body {
       <a href="envisci.html">Environmental Science</a>
     </div>
   </div>
+
   <a href="upload-pictures.html">Upload Pictures</a>
   <a href="contact-us.html">Contact Us</a>
 </div>
 
 <div class="container">
 
-<!-- ⭐ HERO -->
-<h1 style="text-align:center;">Welcome to DeckBridge!</h1>
-
-<p style="text-align:center; max-width:600px; margin:0 auto;">
-  Explore science through themed decks, collect images, and connect learning with real-world impact.
-</p>
-
-<div class="btns">
-  <a href="physics.html" class="btn">Explore Decks</a>
-  <a href="upload-pictures.html" class="btn">Upload Pictures</a>
+<!-- HERO -->
+<div class="hero">
+  <h1>Welcome to DeckBridge</h1>
+  <p>Explore science through interactive decks, real-world impact, and student-driven learning.</p>
+  <a href="#decks">Explore Decks</a>
 </div>
 
-<!-- ⭐ MAP + STATS (your original) -->
-<div class="split" style="margin-top:50px;">
+<!-- STATS + MAP -->
+<div class="split">
 
   <div class="card">
-    <div style="font-size:25px; text-align: center;">
+    <div style="font-size:22px; text-align:center;">
       We have been distributed in
     </div>
 
@@ -270,46 +242,32 @@ body {
   </div>
 
   <div id="map" class="map"></div>
+
 </div>
 
-<!-- ⭐ WHAT YOU CAN DO -->
-<div class="section-title">What You Can Do</div>
+<!-- DECKS -->
+<div id="decks" class="decks">
 
-<div class="features">
-  <div class="feature-card">
-    <b>Explore Themes</b>
-    <p>Discover physics and environmental science topics.</p>
+  <h2>Explore Decks</h2>
+
+  <div class="split">
+
+    <div class="card deck-card">
+      <img src="https://via.placeholder.com/300x160">
+      <h3>Physics</h3>
+      <p>Understand forces, motion, and the laws that shape our world.</p>
+      <a href="physics.html">Go →</a>
+    </div>
+
+    <div class="card deck-card">
+      <img src="https://via.placeholder.com/300x160">
+      <h3>Environmental Science</h3>
+      <p>Learn about ecosystems, sustainability, and global challenges.</p>
+      <a href="envisci.html">Go →</a>
+    </div>
+
   </div>
 
-  <div class="feature-card">
-    <b>Upload Pictures</b>
-    <p>Share your science images and contribute.</p>
-  </div>
-
-  <div class="feature-card">
-    <b>See Impact</b>
-    <p>View how we reach communities.</p>
-  </div>
-</div>
-
-<!-- ⭐ DECKS -->
-<div class="section-title">Explore Decks</div>
-
-<div class="decks">
-  <div class="deck-card">
-    <b>Physics</b>
-    <p>Explore forces and motion</p>
-  </div>
-
-  <div class="deck-card">
-    <b>Environmental Science</b>
-    <p>Learn about our planet</p>
-  </div>
-
-  <div class="deck-card">
-    <b>Coming Soon</b>
-    <p>More subjects soon</p>
-  </div>
 </div>
 
 </div>
@@ -326,8 +284,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 18,
 }).addTo(map);
 
-L.marker([40.792440, -73.691760]).addTo(map).bindPopup("NY");
-L.marker([40.29414, -74.72500]).addTo(map).bindPopup("NJ");
+L.marker([40.79, -73.69]).addTo(map).bindPopup("NY");
+L.marker([40.29, -74.72]).addTo(map).bindPopup("NJ");
 </script>
 
 </body>
