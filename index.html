@@ -16,14 +16,6 @@ body {
   flex-direction: column;
 }
 
-/* ⭐ GLOBAL WIDTH CONTROL (THIS is the big upgrade) */
-.section {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 60px 20px;
-}
-
 /* navbar */
 .navbar {
   display: flex;
@@ -47,113 +39,6 @@ body {
   text-decoration: underline;
 }
 
-/* HERO */
-.hero {
-  text-align: center;
-  padding-top: 40px;
-}
-
-.hero h1 {
-  font-size: 44px;
-  margin-bottom: 15px;
-}
-
-.hero p {
-  color: #64748b;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.hero a {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 12px 22px;
-  background: #3b82f6;
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
-}
-
-/* GRID LAYOUT (cleaner than split) */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-}
-
-/* card */
-.card {
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-/* stats */
-.stats {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 30px;
-}
-
-.stat-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.big {
-  font-size: 56px;
-  color: #3b82f6;
-  font-weight: bold;
-}
-
-.small {
-  font-size: 14px;
-  color: #64748b;
-}
-
-.divider {
-  width: 1px;
-  height: 50px;
-  background: #ddd;
-}
-
-/* map */
-.map {
-  height: 100%;
-  min-height: 300px;
-  border-radius: 12px;
-}
-
-/* section titles */
-.section-title {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-/* decks */
-.deck-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-}
-
-.deck-card img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-/* footer */
-.footer {
-  color: #64748b;
-  text-align: center;
-  padding: 20px;
-  border-top: 1px solid #ddd;
-}
-
 /* dropdown */
 .dropdown {
   position: relative;
@@ -174,7 +59,6 @@ body {
   display: block;
   padding: 10px;
   color: #334155;
-  text-decoration: none;
 }
 
 .dropdown-content a:hover {
@@ -183,6 +67,136 @@ body {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+/* container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: #334155;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  line-height: 1.2;
+}
+
+.hero p {
+  color: #64748b;
+  max-width: 500px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-outline {
+  border: 1px solid #3b82f6;
+  color: #3b82f6;
+  margin-left: 10px;
+}
+
+/* split */
+.split {
+  display: flex;
+  gap: 30px;
+  margin-top: 60px;
+}
+
+/* card */
+.card {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* stats */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.big {
+  font-size: 50px;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+.small {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.divider {
+  width: 1px;
+  height: 40px;
+  background: #ddd;
+}
+
+/* map */
+.map {
+  flex: 1;
+  height: 300px;
+  border-radius: 12px;
+}
+
+/* section title */
+.section-title {
+  text-align: center;
+  margin-top: 80px;
+}
+
+/* decks */
+.deck-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* CTA */
+.cta {
+  margin-top: 60px;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* footer */
+.footer {
+  color: #64748b;
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #ddd;
 }
 </style>
 </head>
@@ -206,66 +220,111 @@ body {
   <a href="contact-us.html">Contact Us</a>
 </div>
 
+<div class="container">
+
 <!-- HERO -->
-<div class="section hero">
-  <h1>Welcome to DeckBridge</h1>
-  <p>Interactive science learning built by students, shared with communities.</p>
-  <a href="#decks">Explore Decks</a>
+<div class="hero">
+  <div>
+    <h1>
+      Learn. Explore.<br>
+      Collect. Make Impact.<br>
+      <span style="color:#3b82f6;">DeckBridge</span>
+    </h1>
+
+    <p>
+      DeckBridge connects students to science through themed decks, images, and real-world impact.
+    </p>
+
+    <a href="#decks" class="btn btn-primary">Explore Decks</a>
+    <a href="upload-pictures.html" class="btn btn-outline">Upload Pictures</a>
+  </div>
+
+  <div>
+    <img src="https://via.placeholder.com/300x250">
+  </div>
 </div>
 
 <!-- STATS + MAP -->
-<div class="section">
-  <div class="grid">
+<div class="split">
 
-    <div class="card">
-      <div style="font-size:20px;">
-        We have been distributed in
+  <div class="card">
+    <div style="text-align:center;">Our Impact So Far</div>
+
+    <div class="stats">
+      <div class="stat-item">
+        <div class="big">3</div>
+        <div class="small">States</div>
       </div>
 
-      <div class="stats">
-        <div class="stat-item">
-          <div class="big">3</div>
-          <div class="small">states</div>
-        </div>
+      <div class="divider"></div>
 
-        <div class="divider"></div>
-
-        <div class="stat-item">
-          <div class="big">6</div>
-          <div class="small">programs</div>
-        </div>
+      <div class="stat-item">
+        <div class="big">6</div>
+        <div class="small">Programs</div>
       </div>
     </div>
 
-    <div id="map" class="map"></div>
+    <p style="text-align:center; margin-top:10px; color:#64748b;">
+      Bringing science education to more students.
+    </p>
+  </div>
 
+  <div id="map" class="map"></div>
+
+</div>
+
+<!-- WHAT YOU CAN DO -->
+<div class="section-title">
+  <h2>What You Can Do</h2>
+</div>
+
+<div class="split">
+  <div class="card">
+    <h3>Explore Themes</h3>
+    <p>Discover interactive science decks.</p>
+  </div>
+
+  <div class="card">
+    <h3>Upload Pictures</h3>
+    <p>Share your science experiences.</p>
+  </div>
+
+  <div class="card">
+    <h3>See Real Impact</h3>
+    <p>See how students make a difference.</p>
   </div>
 </div>
 
 <!-- DECKS -->
-<div id="decks" class="section">
+<div id="decks" class="section-title">
+  <h2>Explore Our Decks</h2>
+</div>
 
-  <div class="section-title">
-    <h2>Explore Decks</h2>
+<div class="split">
+  <div class="card deck-card">
+    <img src="https://via.placeholder.com/300x150">
+    <h3>Physics</h3>
+    <p>Explore laws of nature.</p>
   </div>
 
-  <div class="deck-grid">
-
-    <div class="card deck-card">
-      <img src="https://via.placeholder.com/300x160">
-      <h3>Physics</h3>
-      <p>Forces, motion, and real-world applications.</p>
-      <a href="physics.html">Go →</a>
-    </div>
-
-    <div class="card deck-card">
-      <img src="https://via.placeholder.com/300x160">
-      <h3>Environmental Science</h3>
-      <p>Understand ecosystems and sustainability.</p>
-      <a href="envisci.html">Go →</a>
-    </div>
-
+  <div class="card deck-card">
+    <img src="https://via.placeholder.com/300x150">
+    <h3>Environmental Science</h3>
+    <p>Understand our planet.</p>
   </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div>
+    <h3>Have ideas or want to contribute?</h3>
+    <p style="color:#64748b;">We’d love to hear from you.</p>
+  </div>
+
+  <div>
+    <a href="contact-us.html" class="btn btn-primary">Contact Us</a>
+  </div>
+</div>
 
 </div>
 
