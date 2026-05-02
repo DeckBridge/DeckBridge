@@ -35,66 +35,61 @@ body {
 }
 
 .navbar a:hover {
-  transform: scale(1.1); /* ⭐ 缩小一点 */
+  transform: scale(1.1);
   text-decoration: underline;
+}
+
+/* dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 10px;
+  min-width: 180px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: #334155;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background: #f1f5f9;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 /* container */
 .container {
   flex: 1;
-  padding: 35px; /* ⭐ 只轻微收紧 */
+  padding: 30px 60px;
   color: #334155;
 }
 
-/* hero（保持你风格，只稍微整理） */
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  margin-bottom: 50px;
-}
-
-.hero-text {
-  max-width: 550px;
-}
-
-.hero-text h1 {
-  font-size: 38px;
-  margin-bottom: 10px;
-}
-
-.hero-text p {
-  color: #64748b;
-}
-
-.hero-buttons {
-  margin-top: 20px;
-}
-
-.btn {
-  padding: 10px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.primary {
-  background: #3b82f6;
-  color: white;
-  border: none;
-}
-
-.secondary {
-  background: white;
-  border: 1px solid #3b82f6;
-  color: #3b82f6;
+/* titles */
+.section-title {
+  font-size: 22px;
+  margin-bottom: 15px;
+  display: inline-block;
+  border-bottom: 2px solid #3b82f6;
+  padding-bottom: 5px;
 }
 
 /* split */
 .split {
   display: flex;
-  gap: 25px; /* ⭐ 轻微收紧 */
+  gap: 30px;
   align-items: stretch;
 }
 
@@ -103,24 +98,21 @@ body {
   flex: 1;
   background: white;
   border-radius: 12px;
-  padding: 28px; /* ⭐ 微调 */
+  padding: 30px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* ⭐⭐⭐ 重点修复：Our Impact ⭐⭐⭐ */
+/* stats */
 .stats {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   margin-top: 30px;
-  width: 100%;
 }
 
 .stat-item {
-  flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 12px;
 }
 
@@ -133,72 +125,45 @@ body {
 .small {
   font-size: 14px;
   color: #64748b;
-  max-width: 120px;
+  max-width: 140px;
 }
 
-/* ⭐ 保留你的分割线但更高级一点 */
 .divider {
   width: 1px;
-  height: 55px;
-  background: rgba(0,0,0,0.08); /* ⭐ 更柔和 */
+  height: 60px;
+  background: #ddd;
 }
 
 /* map */
 .map {
   flex: 1;
-  height: 300px;
+  height: 320px;
   border-radius: 12px;
 }
 
-/* section title（只加一点设计感） */
-.section-title {
-  text-align: center;
-  margin-top: 60px;
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.section-title::after {
-  content: "";
-  display: block;
-  width: 45px;
-  height: 3px;
-  background: #3b82f6;
-  margin: 8px auto;
-  border-radius: 2px;
-}
-
-/* WHAT YOU CAN DO（改结构但不破坏风格） */
-.actions {
-  display: flex;
-  gap: 20px;
+/* WHAT YOU CAN DO */
+.action-list {
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.action-card {
-  flex: 1;
-  background: white;
-  padding: 22px;
-  border-radius: 12px;
+.action-item {
   display: flex;
+  align-items: center;
   gap: 15px;
-  align-items: flex-start;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .icon {
-  font-size: 26px;
+  width: 40px;
+  height: 40px;
+  background: #93c5fd;
+  border-radius: 10px;
 }
 
-.action-text .title {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.action-text .desc {
-  font-size: 13px;
-  color: #64748b;
-  margin-bottom: 6px;
+.action-text b {
+  display: block;
 }
 
 .action-text a {
@@ -207,35 +172,40 @@ body {
   text-decoration: none;
 }
 
-/* DECKS（横滑但不夸张） */
+/* decks */
 .decks {
   display: flex;
-  gap: 18px;
+  gap: 20px;
   overflow-x: auto;
-  margin-top: 20px;
-  padding-bottom: 5px;
+  padding-top: 10px;
 }
 
 .deck-card {
-  min-width: 230px;
+  min-width: 220px;
   background: white;
-  padding: 20px;
   border-radius: 12px;
+  padding: 20px;
   flex-shrink: 0;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
+.deck-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
 .deck-card a {
+  display: block;
+  margin-top: 10px;
   color: #3b82f6;
-  font-size: 13px;
   text-decoration: none;
 }
 
 /* footer */
 .footer {
   color: #64748b;
-  text-align: center;
   padding: 20px;
+  text-align: center;
   border-top: 1px solid #ddd;
 }
 </style>
@@ -261,30 +231,15 @@ body {
 
 <div class="container">
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-text">
-    <h1>Learn. Explore. Collect.</h1>
-    <p>DeckBridge connects students to science through themed decks and real-world impact.</p>
-
-    <div class="hero-buttons">
-      <button class="btn primary">Explore Decks</button>
-      <button class="btn secondary">Upload Pictures</button>
-    </div>
-  </div>
-
-  <img src="https://via.placeholder.com/320">
-</div>
+<h1 style="text-align:center;">Welcome to DeckBridge!</h1>
 
 <!-- IMPACT -->
 <div class="split">
+
   <div class="card">
-    <div style="text-align:center;font-size:20px;">
-      We have been distributed in
-    </div>
+    <div class="section-title">Our Impact So Far</div>
 
     <div class="stats">
-
       <div class="stat-item">
         <div class="big">3</div>
         <div class="small">states</div>
@@ -296,64 +251,73 @@ body {
         <div class="big">6</div>
         <div class="small">libraries / museums / after-school programs</div>
       </div>
-
     </div>
   </div>
 
   <div id="map" class="map"></div>
+
 </div>
 
 <!-- WHAT YOU CAN DO -->
-<div class="section-title">What You Can Do</div>
+<div style="margin-top:40px;">
+  <div class="section-title">What You Can Do</div>
 
-<div class="actions">
-  <div class="action-card">
-    <div class="icon">📘</div>
-    <div class="action-text">
-      <div class="title">Explore Themes</div>
-      <div class="desc">Dive into science topics</div>
-      <a href="#">Explore →</a>
-    </div>
-  </div>
+  <div class="card">
+    <div class="action-list">
 
-  <div class="action-card">
-    <div class="icon">📷</div>
-    <div class="action-text">
-      <div class="title">Upload Pictures</div>
-      <div class="desc">Share your discoveries</div>
-      <a href="#">Upload →</a>
-    </div>
-  </div>
+      <div class="action-item">
+        <div class="icon"></div>
+        <div class="action-text">
+          <b>Explore Decks</b>
+          <div>Learn through curated topics</div>
+          <a href="#">Go explore →</a>
+        </div>
+      </div>
 
-  <div class="action-card">
-    <div class="icon">🌍</div>
-    <div class="action-text">
-      <div class="title">See Impact</div>
-      <div class="desc">View real-world results</div>
-      <a href="#">Learn →</a>
+      <div class="action-item">
+        <div class="icon"></div>
+        <div class="action-text">
+          <b>Upload Work</b>
+          <div>Share your contributions</div>
+          <a href="#">Upload now →</a>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="icon"></div>
+        <div class="action-text">
+          <b>Contact Us</b>
+          <div>Reach out to collaborate</div>
+          <a href="#">Get in touch →</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
 <!-- DECKS -->
-<div class="section-title">Explore Our Decks</div>
+<div style="margin-top:40px;">
+  <div class="section-title">Explore Our Decks</div>
 
-<div class="decks">
-  <div class="deck-card">
-    <h3>Physics</h3>
-    <p>Explore the universe</p>
-    <a href="physics.html">Explore →</a>
-  </div>
+  <div class="decks">
+    <div class="deck-card">
+      <img src="https://via.placeholder.com/200">
+      <b>Physics</b>
+      <a href="physics.html">View deck →</a>
+    </div>
 
-  <div class="deck-card">
-    <h3>Environmental Science</h3>
-    <p>Understand our planet</p>
-    <a href="envisci.html">Explore →</a>
-  </div>
+    <div class="deck-card">
+      <img src="https://via.placeholder.com/200">
+      <b>Environmental Science</b>
+      <a href="envisci.html">View deck →</a>
+    </div>
 
-  <div class="deck-card">
-    <h3>Biology</h3>
-    <p>Coming soon</p>
+    <div class="deck-card">
+      <img src="https://via.placeholder.com/200">
+      <b>More Coming Soon</b>
+      <a href="#">Stay tuned →</a>
+    </div>
   </div>
 </div>
 
