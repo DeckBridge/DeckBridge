@@ -1,245 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-<style>
-body {
-  font-family: Arial;
-  background: #f1f5f9;
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* navbar */
-.navbar {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 15px;
-  background: #93c5fd;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.navbar a:hover {
-  transform: scale(1.1);
-  text-decoration: underline;
-}
-
-/* dropdown */
-.dropdown {
-  position: relative;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  border-radius: 10px;
-  min-width: 180px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 10px;
-  color: #334155;
-  text-decoration: none;
-}
-
-.dropdown-content a:hover {
-  background: #f1f5f9;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* container */
-.container {
-  flex: 1;
-  padding: 30px 60px;
-  color: #334155;
-}
-
-/* titles */
-.section-title {
-  font-size: 22px;
-  margin-bottom: 15px;
-  display: inline-block;
-  border-bottom: 2px solid #3b82f6;
-  padding-bottom: 5px;
-}
-
-/* split */
-.split {
-  display: flex;
-  gap: 30px;
-  align-items: stretch;
-}
-
-/* card */
-.card {
-  flex: 1;
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-/* stats */
-.stats {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 30px;
-}
-
-.stat-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.big {
-  font-size: 60px;
-  color: #3b82f6;
-  font-weight: bold;
-}
-
-.small {
-  font-size: 14px;
-  color: #64748b;
-  max-width: 140px;
-}
-
-.divider {
-  width: 1px;
-  height: 60px;
-  background: #ddd;
-}
-
-/* map */
-.map {
-  flex: 1;
-  height: 320px;
-  border-radius: 12px;
-}
-
-/* WHAT YOU CAN DO */
-.action-list {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.action-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.icon {
-  width: 40px;
-  height: 40px;
-  background: #93c5fd;
-  border-radius: 10px;
-}
-
-.action-text b {
-  display: block;
-}
-
-.action-text a {
-  font-size: 13px;
-  color: #3b82f6;
-  text-decoration: none;
-}
-
-/* decks */
-.decks {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding-top: 10px;
-}
-
-.deck-card {
-  min-width: 220px;
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  flex-shrink: 0;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-.deck-card img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.deck-card a {
-  display: block;
-  margin-top: 10px;
-  color: #3b82f6;
-  text-decoration: none;
-}
-
-/* footer */
-.footer {
-  color: #64748b;
-  padding: 20px;
-  text-align: center;
-  border-top: 1px solid #ddd;
-}
-</style>
-</head>
-
-<body>
-
-<div class="navbar">
-  <a href="index.html">Home</a>
-  <a href="about.html">About Us</a>
-
-  <div class="dropdown">
-    <a href="#">Deck ▾</a>
-    <div class="dropdown-content">
-      <a href="physics.html">Physics</a>
-      <a href="envisci.html">Environmental Science</a>
-    </div>
-  </div>
-
-  <a href="upload-pictures.html">Upload Pictures</a>
-  <a href="contact-us.html">Contact Us</a>
-</div>
-
 <div class="container">
 
 <h1 style="text-align:center;">Welcome to DeckBridge!</h1>
 
 <!-- IMPACT -->
-<div class="split">
+<div class="split" style="margin-top:40px;">
 
   <div class="card">
-    <div class="section-title">Our Impact So Far</div>
+    <div style="font-size:22px; margin-bottom:20px;">
+      Our Impact So Far
+    </div>
 
     <div class="stats">
+
       <div class="stat-item">
         <div class="big">3</div>
         <div class="small">states</div>
@@ -249,8 +21,11 @@ body {
 
       <div class="stat-item">
         <div class="big">6</div>
-        <div class="small">libraries / museums / after-school programs</div>
+        <div class="small">
+          libraries / museums / after-school programs
+        </div>
       </div>
+
     </div>
   </div>
 
@@ -259,85 +34,63 @@ body {
 </div>
 
 <!-- WHAT YOU CAN DO -->
-<div style="margin-top:40px;">
-  <div class="section-title">What You Can Do</div>
+<div style="margin-top:60px;">
 
-  <div class="card">
-    <div class="action-list">
-
-      <div class="action-item">
-        <div class="icon"></div>
-        <div class="action-text">
-          <b>Explore Decks</b>
-          <div>Learn through curated topics</div>
-          <a href="#">Go explore →</a>
-        </div>
-      </div>
-
-      <div class="action-item">
-        <div class="icon"></div>
-        <div class="action-text">
-          <b>Upload Work</b>
-          <div>Share your contributions</div>
-          <a href="#">Upload now →</a>
-        </div>
-      </div>
-
-      <div class="action-item">
-        <div class="icon"></div>
-        <div class="action-text">
-          <b>Contact Us</b>
-          <div>Reach out to collaborate</div>
-          <a href="#">Get in touch →</a>
-        </div>
-      </div>
-
-    </div>
+  <div style="font-size:20px; margin-bottom:15px;">
+    What You Can Do
   </div>
+
+  <div style="display:flex; flex-direction:column; gap:18px; max-width:600px;">
+
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div style="width:8px; height:8px; background:#3b82f6; border-radius:50%;"></div>
+      <div>
+        <b>Explore Decks</b><br>
+        <span style="color:#64748b;">Learn through curated topics</span>
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div style="width:8px; height:8px; background:#3b82f6; border-radius:50%;"></div>
+      <div>
+        <b>Upload Work</b><br>
+        <span style="color:#64748b;">Share your contributions</span>
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div style="width:8px; height:8px; background:#3b82f6; border-radius:50%;"></div>
+      <div>
+        <b>Contact Us</b><br>
+        <span style="color:#64748b;">Reach out to collaborate</span>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
 <!-- DECKS -->
-<div style="margin-top:40px;">
-  <div class="section-title">Explore Our Decks</div>
+<div style="margin-top:60px;">
 
-  <div class="decks">
-    <div class="deck-card">
-      <img src="https://via.placeholder.com/200">
-      <b>Physics</b>
-      <a href="physics.html">View deck →</a>
-    </div>
-
-    <div class="deck-card">
-      <img src="https://via.placeholder.com/200">
-      <b>Environmental Science</b>
-      <a href="envisci.html">View deck →</a>
-    </div>
-
-    <div class="deck-card">
-      <img src="https://via.placeholder.com/200">
-      <b>More Coming Soon</b>
-      <a href="#">Stay tuned →</a>
-    </div>
+  <div style="font-size:20px; margin-bottom:15px;">
+    Explore Our Decks
   </div>
-</div>
+
+  <div style="display:flex; gap:20px; overflow-x:auto; padding-bottom:10px;">
+
+    <div style="min-width:220px;">
+      <img src="https://via.placeholder.com/220" style="border-radius:10px; width:100%;">
+      <div style="margin-top:8px;"><b>Physics</b></div>
+    </div>
+
+    <div style="min-width:220px;">
+      <img src="https://via.placeholder.com/220" style="border-radius:10px; width:100%;">
+      <div style="margin-top:8px;"><b>Environmental Science</b></div>
+    </div>
+
+  </div>
 
 </div>
 
-<div class="footer">
-  <p><b>DeckBridge</b></p>
-  <p>Site by Gia Jing</p>
 </div>
-
-<script>
-var map = L.map('map').setView([39.5, -98.35], 4);
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 18,
-}).addTo(map);
-
-L.marker([40.792440, -73.691760]).addTo(map).bindPopup("NY");
-L.marker([40.29414, -74.72500]).addTo(map).bindPopup("NJ");
-</script>
-
-</body>
-</html>
