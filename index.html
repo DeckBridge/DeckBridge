@@ -50,8 +50,8 @@ body {
   top: 100%;
   left: 0;
   background: white;
-  border-radius: 10px;
   min-width: 180px;
+  border-radius: 10px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 
@@ -59,7 +59,6 @@ body {
   display: block;
   padding: 10px;
   color: #334155;
-  text-decoration: none;
 }
 
 .dropdown-content a:hover {
@@ -72,25 +71,53 @@ body {
 
 /* container */
 .container {
-  flex: 1;
-  padding: 30px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
   color: #334155;
 }
 
-/* titles */
-.section-title {
-  font-size: 22px;
-  margin-bottom: 15px;
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  line-height: 1.2;
+}
+
+.hero p {
+  color: #64748b;
+  max-width: 500px;
+}
+
+.btn {
   display: inline-block;
-  border-bottom: 2px solid #3b82f6;
-  padding-bottom: 5px;
+  margin-top: 20px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-outline {
+  border: 1px solid #3b82f6;
+  color: #3b82f6;
+  margin-left: 10px;
 }
 
 /* split */
 .split {
   display: flex;
   gap: 30px;
-  align-items: stretch;
+  margin-top: 60px;
 }
 
 /* card */
@@ -98,26 +125,26 @@ body {
   flex: 1;
   background: white;
   border-radius: 12px;
-  padding: 30px;
+  padding: 25px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 /* stats */
 .stats {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 30px;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
 }
 
 .stat-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .big {
-  font-size: 60px;
+  font-size: 50px;
   color: #3b82f6;
   font-weight: bold;
 }
@@ -125,87 +152,50 @@ body {
 .small {
   font-size: 14px;
   color: #64748b;
-  max-width: 140px;
 }
 
 .divider {
   width: 1px;
-  height: 60px;
+  height: 40px;
   background: #ddd;
 }
 
 /* map */
 .map {
   flex: 1;
-  height: 320px;
+  height: 300px;
   border-radius: 12px;
 }
 
-/* WHAT YOU CAN DO */
-.action-list {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.action-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.icon {
-  width: 40px;
-  height: 40px;
-  background: #93c5fd;
-  border-radius: 10px;
-}
-
-.action-text b {
-  display: block;
-}
-
-.action-text a {
-  font-size: 13px;
-  color: #3b82f6;
-  text-decoration: none;
+/* section title */
+.section-title {
+  text-align: center;
+  margin-top: 80px;
 }
 
 /* decks */
-.decks {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding-top: 10px;
-}
-
-.deck-card {
-  min-width: 220px;
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  flex-shrink: 0;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
 .deck-card img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-.deck-card a {
-  display: block;
-  margin-top: 10px;
-  color: #3b82f6;
-  text-decoration: none;
+/* CTA */
+.cta {
+  margin-top: 60px;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* footer */
 .footer {
   color: #64748b;
-  padding: 20px;
   text-align: center;
+  padding: 20px;
   border-top: 1px solid #ddd;
 }
 </style>
@@ -213,6 +203,7 @@ body {
 
 <body>
 
+<!-- NAV -->
 <div class="navbar">
   <a href="index.html">Home</a>
   <a href="about.html">About Us</a>
@@ -231,33 +222,51 @@ body {
 
 <div class="container">
 
-<h1 style="text-align:center;">Welcome to DeckBridge!</h1>
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>
+      Learn. Explore.<br>
+      Collect. Make Impact.<br>
+      <span style="color:#3b82f6;">DeckBridge</span>
+    </h1>
 
-<!-- IMPACT -->
-<div class="split" style="margin-top:40px;">
+    <p>
+      DeckBridge connects students to science through themed decks, images, and real-world impact.
+    </p>
+
+    <a href="#decks" class="btn btn-primary">Explore Decks</a>
+    <a href="upload-pictures.html" class="btn btn-outline">Upload Pictures</a>
+  </div>
+
+  <div>
+    <img src="https://via.placeholder.com/300x250">
+  </div>
+</div>
+
+<!-- STATS + MAP -->
+<div class="split">
 
   <div class="card">
-    <div style="font-size:22px; margin-bottom:20px;">
-      Our Impact So Far
-    </div>
+    <div style="text-align:center;">Our Impact So Far</div>
 
     <div class="stats">
-
       <div class="stat-item">
         <div class="big">3</div>
-        <div class="small">states</div>
+        <div class="small">States</div>
       </div>
 
       <div class="divider"></div>
 
       <div class="stat-item">
         <div class="big">6</div>
-        <div class="small">
-          libraries / museums / after-school programs
-        </div>
+        <div class="small">Programs</div>
       </div>
-
     </div>
+
+    <p style="text-align:center; margin-top:10px; color:#64748b;">
+      Bringing science education to more students.
+    </p>
   </div>
 
   <div id="map" class="map"></div>
@@ -265,67 +274,61 @@ body {
 </div>
 
 <!-- WHAT YOU CAN DO -->
-<div style="margin-top:60px;">
+<div class="section-title">
+  <h2>What You Can Do</h2>
+</div>
 
-  <div style="font-size:20px; margin-bottom:15px;">
-    What You Can Do
+<div class="split">
+  <div class="card">
+    <h3>Explore Themes</h3>
+    <p>Discover interactive science decks.</p>
   </div>
 
-  <div style="display:flex; flex-direction:column; gap:18px; max-width:600px;">
-
-    <div style="display:flex; align-items:center; gap:12px;">
-      <div style="width:8px; height:8px; background:#3b82f6; border-radius:50%;"></div>
-      <div>
-        <b>Explore Decks</b><br>
-        <span style="color:#64748b;">Learn through curated topics</span>
-      </div>
-    </div>
-
-    <div style="display:flex; align-items:center; gap:12px;">
-      <div style="width:8px; height:8px; background:#3b82f6; border-radius:50%;"></div>
-      <div>
-        <b>Upload Work</b><br>
-        <span style="color:#64748b;">Share your contributions</span>
-      </div>
-    </div>
-
-    <div style="display:flex; align-items:center; gap:12px;">
-      <div style="width:8px; height:8px; background:#3b82f6; border-radius:50%;"></div>
-      <div>
-        <b>Contact Us</b><br>
-        <span style="color:#64748b;">Reach out to collaborate</span>
-      </div>
-    </div>
-
+  <div class="card">
+    <h3>Upload Pictures</h3>
+    <p>Share your science experiences.</p>
   </div>
 
+  <div class="card">
+    <h3>See Real Impact</h3>
+    <p>See how students make a difference.</p>
+  </div>
 </div>
 
 <!-- DECKS -->
-<div style="margin-top:60px;">
+<div id="decks" class="section-title">
+  <h2>Explore Our Decks</h2>
+</div>
 
-  <div style="font-size:20px; margin-bottom:15px;">
-    Explore Our Decks
+<div class="split">
+  <div class="card deck-card">
+    <img src="https://via.placeholder.com/300x150">
+    <h3>Physics</h3>
+    <p>Explore laws of nature.</p>
   </div>
 
-  <div style="display:flex; gap:20px; overflow-x:auto; padding-bottom:10px;">
+  <div class="card deck-card">
+    <img src="https://via.placeholder.com/300x150">
+    <h3>Environmental Science</h3>
+    <p>Understand our planet.</p>
+  </div>
+</div>
 
-    <div style="min-width:220px;">
-      <img src="https://via.placeholder.com/220" style="border-radius:10px; width:100%;">
-      <div style="margin-top:8px;"><b>Physics</b></div>
-    </div>
-
-    <div style="min-width:220px;">
-      <img src="https://via.placeholder.com/220" style="border-radius:10px; width:100%;">
-      <div style="margin-top:8px;"><b>Environmental Science</b></div>
-    </div>
-
+<!-- CTA -->
+<div class="cta">
+  <div>
+    <h3>Have ideas or want to contribute?</h3>
+    <p style="color:#64748b;">We’d love to hear from you.</p>
   </div>
 
+  <div>
+    <a href="contact-us.html" class="btn btn-primary">Contact Us</a>
+  </div>
 </div>
 
 </div>
 
+<!-- FOOTER -->
 <div class="footer">
   <p><b>DeckBridge</b></p>
   <p>Site by Gia Jing</p>
@@ -338,8 +341,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 18,
 }).addTo(map);
 
-L.marker([40.792440, -73.691760]).addTo(map).bindPopup("NY");
-L.marker([40.29414, -74.72500]).addTo(map).bindPopup("NJ");
+L.marker([40.79, -73.69]).addTo(map).bindPopup("NY");
+L.marker([40.29, -74.72]).addTo(map).bindPopup("NJ");
 </script>
 
 </body>
