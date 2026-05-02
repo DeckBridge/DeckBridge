@@ -1,3 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<style>
+body {
+  font-family: Arial;
+  background: #f1f5f9;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* navbar */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px;
+  background: #93c5fd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  transform: scale(1.1);
+  text-decoration: underline;
+}
+
+/* dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 10px;
+  min-width: 180px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: #334155;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background: #f1f5f9;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* container */
+.container {
+  flex: 1;
+  padding: 30px 60px;
+  color: #334155;
+}
+
+/* titles */
+.section-title {
+  font-size: 22px;
+  margin-bottom: 15px;
+  display: inline-block;
+  border-bottom: 2px solid #3b82f6;
+  padding-bottom: 5px;
+}
+
+/* split */
+.split {
+  display: flex;
+  gap: 30px;
+  align-items: stretch;
+}
+
+/* card */
+.card {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* stats */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.big {
+  font-size: 60px;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+.small {
+  font-size: 14px;
+  color: #64748b;
+  max-width: 140px;
+}
+
+.divider {
+  width: 1px;
+  height: 60px;
+  background: #ddd;
+}
+
+/* map */
+.map {
+  flex: 1;
+  height: 320px;
+  border-radius: 12px;
+}
+
+/* WHAT YOU CAN DO */
+.action-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  background: #93c5fd;
+  border-radius: 10px;
+}
+
+.action-text b {
+  display: block;
+}
+
+.action-text a {
+  font-size: 13px;
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+/* decks */
+.decks {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-top: 10px;
+}
+
+.deck-card {
+  min-width: 220px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.deck-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.deck-card a {
+  display: block;
+  margin-top: 10px;
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+/* footer */
+.footer {
+  color: #64748b;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+
+  <div class="dropdown">
+    <a href="#">Deck ▾</a>
+    <div class="dropdown-content">
+      <a href="physics.html">Physics</a>
+      <a href="envisci.html">Environmental Science</a>
+    </div>
+  </div>
+
+  <a href="upload-pictures.html">Upload Pictures</a>
+  <a href="contact-us.html">Contact Us</a>
+</div>
+
 <div class="container">
 
 <h1 style="text-align:center;">Welcome to DeckBridge!</h1>
@@ -94,3 +325,22 @@
 </div>
 
 </div>
+
+<div class="footer">
+  <p><b>DeckBridge</b></p>
+  <p>Site by Gia Jing</p>
+</div>
+
+<script>
+var map = L.map('map').setView([39.5, -98.35], 4);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 18,
+}).addTo(map);
+
+L.marker([40.792440, -73.691760]).addTo(map).bindPopup("NY");
+L.marker([40.29414, -74.72500]).addTo(map).bindPopup("NJ");
+</script>
+
+</body>
+</html>
