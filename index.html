@@ -53,7 +53,6 @@ body {
   min-width: 180px;
   border-radius: 10px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  overflow: hidden;
 }
 
 .dropdown-content a {
@@ -72,9 +71,9 @@ body {
 
 /* container */
 .container {
-  max-width: 1150px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 50px 24px;
+  padding: 40px 20px;
   color: #334155;
 }
 
@@ -82,49 +81,25 @@ body {
 .hero {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 50px;
-  margin-top: 10px;
-}
-
-.hero-text {
-  flex: 1;
-}
-
-.hero-image {
-  flex: 1;
-}
-
-.hero-image img {
-  width: 100%;
-  border-radius: 18px;
-  object-fit: cover;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  gap: 40px;
 }
 
 .hero h1 {
-  font-size: 48px;
-  line-height: 1.15;
-  margin-bottom: 20px;
-  color: #0f172a;
+  font-size: 42px;
+  line-height: 1.2;
 }
 
 .hero p {
   color: #64748b;
-  max-width: 520px;
-  line-height: 1.7;
-  font-size: 16px;
+  max-width: 500px;
 }
 
-/* buttons */
 .btn {
   display: inline-block;
-  margin-top: 24px;
-  padding: 13px 22px;
-  border-radius: 10px;
+  margin-top: 20px;
+  padding: 12px 20px;
+  border-radius: 8px;
   text-decoration: none;
-  font-weight: bold;
-  transition: 0.25s;
 }
 
 .btn-primary {
@@ -132,272 +107,118 @@ body {
   color: white;
 }
 
-.btn-primary:hover {
-  background: #2563eb;
-}
-
 .btn-outline {
   border: 1px solid #3b82f6;
   color: #3b82f6;
-  margin-left: 12px;
-}
-
-.btn-outline:hover {
-  background: #eff6ff;
+  margin-left: 10px;
 }
 
 /* split */
 .split {
   display: flex;
-  gap: 28px;
-  margin-top: 70px;
-  align-items: stretch;
+  gap: 30px;
+  margin-top: 60px;
 }
 
-/* cards */
+/* card */
 .card {
   flex: 1;
   background: white;
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 /* stats */
 .stats {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 35px;
-  margin-top: 35px;
-  margin-bottom: 25px;
+  gap: 40px;
+  margin-top: 20px;
 }
 
 .stat-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .big {
-  font-size: 64px;
+  font-size: 50px;
   color: #3b82f6;
   font-weight: bold;
-  line-height: 1;
+  margin-top: 40px;
 }
 
 .small {
-  font-size: 15px;
+  font-size: 14px;
   color: #64748b;
-  max-width: 130px;
-  line-height: 1.4;
+  margin-top: 45px;
 }
 
 .divider {
   width: 1px;
-  height: 60px;
-  background: rgba(148,163,184,0.35);
+  height: 40px;
+  background: #ddd;
+  margin-top: 40px;
 }
 
 /* map */
 .map {
   flex: 1;
-  height: 340px;
-  border-radius: 16px;
-  overflow: hidden;
+  height: 300px;
+  border-radius: 12px;
 }
 
 /* section title */
 .section-title {
   text-align: center;
-  margin-top: 85px;
-  margin-bottom: 28px;
+  margin-top: 80px;
 }
 
-.section-title h2 {
-  font-size: 32px;
-  margin-bottom: 12px;
-  color: #0f172a;
-}
-
-.section-title::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: #3b82f6;
-  margin: 0 auto;
-  border-radius: 2px;
-}
-
-/* action cards */
-.action-grid {
-  display: flex;
-  gap: 24px;
-}
-
-.action-card {
-  flex: 1;
-  background: white;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-
-  display: flex;
-  align-items: flex-start;
-  gap: 18px;
-}
-
-.icon {
-  width: 52px;
-  height: 52px;
-  min-width: 52px;
-
-  background: #dbeafe;
-  color: #3b82f6;
-
-  border-radius: 12px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 24px;
-}
-
-.action-content h3 {
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-
-.action-content p {
-  color: #64748b;
-  margin-bottom: 10px;
-  line-height: 1.5;
-}
-
-.action-content a {
-  color: #3b82f6;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.action-content a:hover {
-  text-decoration: underline;
-}
-
-/* deck scroll */
-.deck-scroll {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  padding-bottom: 10px;
-  scroll-behavior: smooth;
-}
-
-.deck-scroll::-webkit-scrollbar {
-  height: 8px;
-}
-
-.deck-scroll::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 20px;
-}
-
-/* deck cards */
-.deck-card {
-  min-width: 320px;
-  background: white;
-  border-radius: 16px;
-  padding: 18px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-}
-
+/* decks */
 .deck-card img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 16px;
-}
-
-.deck-card h3 {
+  border-radius: 10px;
   margin-bottom: 10px;
-}
-
-.deck-card p {
-  color: #64748b;
-  line-height: 1.5;
-}
-
-.deck-card a {
-  color: #3b82f6;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.deck-card a:hover {
-  text-decoration: underline;
 }
 
 /* CTA */
 .cta {
-  margin-top: 80px;
+  margin-top: 60px;
   background: white;
-  padding: 35px;
-  border-radius: 18px;
-
+  padding: 25px;
+  border-radius: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-}
-
-.cta h3 {
-  margin-top: 0;
-  font-size: 28px;
-}
-
-.cta p {
-  color: #64748b;
 }
 
 /* footer */
 .footer {
   color: #64748b;
   text-align: center;
-  padding: 22px;
+  padding: 20px;
   border-top: 1px solid #ddd;
-  margin-top: 80px;
 }
 
-.footer p {
-  margin: 8px 0;
+.section-title {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  position: relative;
 }
 
-.leaflet-control-attribution {
-  font-size: 10px;
-  opacity: 0.5;
-}
-
-/* mobile */
-@media (max-width: 900px) {
-
-  .hero,
-  .split,
-  .action-grid,
-  .cta {
-    flex-direction: column;
-  }
-
-  .hero h1 {
-    font-size: 38px;
-  }
-
-  .map {
-    width: 100%;
-  }
+.section-title::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #3b82f6;
+  margin: 10px auto 0;
+  border-radius: 2px;
 }
 </style>
 </head>
@@ -411,7 +232,6 @@ body {
 
   <div class="dropdown">
     <a href="#">Deck ▾</a>
-
     <div class="dropdown-content">
       <a href="physics.html">Physics</a>
       <a href="envisci.html">Environmental Science</a>
@@ -426,67 +246,49 @@ body {
 
 <!-- HERO -->
 <div class="hero">
-
-  <div class="hero-text">
-
+  <div>
     <h1>
-      Learn. Explore.<br>
-      Collect. Make Impact.<br>
+      Learn. Explore.喵喵喵<br>
+      Collect. Make Impact.喵喵喵<br>
       <span style="color:#3b82f6;">DeckBridge</span>
     </h1>
 
     <p>
-      DeckBridge connects students to science through themed decks, images, and real-world impact.
+      DeckBridge connects students to science through themed decks, images, and real-world impact.喵喵喵
     </p>
 
     <a href="#decks" class="btn btn-primary">Explore Decks</a>
-
-    <a href="upload-pictures.html" class="btn btn-outline">
-      Upload Pictures
-    </a>
-
+    <a href="upload-pictures.html" class="btn btn-outline">Upload Pictures</a>
   </div>
 
-  <div class="hero-image">
-    <!-- replace with your own image -->
-    <img src="https://via.placeholder.com/700x450">
+  <div>
+    <img src="https://via.placeholder.com/300x250">
   </div>
-
 </div>
 
 <!-- STATS + MAP -->
 <div class="split">
 
   <div class="card">
-
-    <div style="text-align:center; font-size:24px; font-weight:bold;">
-      Our Impact So Far
-    </div>
+    <div style="text-align:center; font-size: 20px;">Our Impact So Far</div>
 
     <div class="stats">
-
       <div class="stat-item">
         <div class="big">3</div>
-        <div class="small">
-          States
-        </div>
+        <div class="small">States</div>
       </div>
 
       <div class="divider"></div>
 
       <div class="stat-item">
         <div class="big">6</div>
-        <div class="small">
-          Libraries / Museums / Programs
-        </div>
+        <div class="small">Libraries/Museums/Programs</div>
       </div>
-
     </div>
 
-    <p style="text-align:center; color:#64748b;">
-      Bringing science education to more students.
+    <p style="text-align:center; margin-bottom:10px; color:#64748b;">
+      Bringing science education to more students.喵喵喵
     </p>
-
   </div>
 
   <div id="map" class="map"></div>
@@ -498,56 +300,23 @@ body {
   <h2>What You Can Do</h2>
 </div>
 
-<div class="action-grid">
-
-  <div class="action-card">
-
-    <div class="icon">🧪</div>
-
-    <div class="action-content">
-      <h3>Explore Decks</h3>
-
-      <p>
-        Discover interactive science decks designed for students and educators.
-      </p>
-
-      <a href="#decks">Explore Now →</a>
-    </div>
-
+<div class="split">
+  <div class="card">
+    <h3>Explore Decks</h3>
+    <p>Discover interactive science decks.喵喵喵</p>
+    <a href="#decks">Explore Now &rarr;</a>
   </div>
 
-  <div class="action-card">
-
-    <div class="icon">📸</div>
-
-    <div class="action-content">
-      <h3>Upload Pictures</h3>
-
-      <p>
-        Share your science experiences and contribute to the community gallery.
-      </p>
-
-      <a href="upload-pictures.html">Upload Now →</a>
-    </div>
-
+  <div class="card">
+    <h3>Upload Pictures</h3>
+    <p>Share your science experiences.喵喵喵</p>
+    <a href="upload-pictures.html">Upload Now &rarr;</a>
   </div>
 
-  <div class="action-card">
-
-    <div class="icon">🌎</div>
-
-    <div class="action-content">
-      <h3>See Our Impact</h3>
-
-      <p>
-        Learn how DeckBridge reaches schools, museums, and learning programs.
-      </p>
-
-      <a href="about.html">Learn More →</a>
-    </div>
-
+  <div class="card">
+    <h3>喵喵喵他给的是see our impact</h3>
+    <p>我也不知道要不要做喵喵喵</p>
   </div>
-
 </div>
 
 <!-- DECKS -->
@@ -555,72 +324,32 @@ body {
   <h2>Explore Our Decks</h2>
 </div>
 
-<div class="deck-scroll">
-
-  <div class="deck-card">
-
-    <!-- replace with your own image -->
-    <img src="https://via.placeholder.com/400x220">
-
+<div class="split">
+  <div class="card deck-card">
+    <img src="https://via.placeholder.com/300x150">
     <h3>Physics</h3>
-
-    <p>
-      Explore the laws of motion, energy, waves, electricity, and more.
-    </p>
-
-    <a href="physics.html">Explore Physics →</a>
-
+    <p>Explore laws of nature.是吗我也不知道</p>
+    <a href="physics.html">Explore Physics &rarr;</a>
   </div>
 
-  <div class="deck-card">
-
-    <!-- replace with your own image -->
-    <img src="https://via.placeholder.com/400x220">
-
+  <div class="card deck-card">
+    <img src="https://via.placeholder.com/300x150">
     <h3>Environmental Science</h3>
-
-    <p>
-      Understand ecosystems, climate, sustainability, and our planet.
-    </p>
-
-    <a href="envisci.html">Explore Environmental Science →</a>
-
+    <p>Understand our planet.我也不知道喵喵喵</p>
+    <a href="envisci.html">Explore Environmental Science &rarr;</a>
   </div>
-
-  <div class="deck-card">
-
-    <!-- future deck -->
-    <img src="https://via.placeholder.com/400x220">
-
-    <h3>Future Deck</h3>
-
-    <p>
-      More science topics and interactive collections are coming soon.
-    </p>
-
-    <a href="#">Coming Soon →</a>
-
-  </div>
-
 </div>
 
 <!-- CTA -->
 <div class="cta">
-
   <div>
     <h3>Have ideas or want to contribute?</h3>
-
-    <p>
-      We’d love to hear from you.
-    </p>
+    <p style="color:#64748b;">We’d love to hear from you.</p>
   </div>
 
   <div>
-    <a href="contact-us.html" class="btn btn-primary">
-      Contact Us
-    </a>
+    <a href="contact-us.html" class="btn btn-primary">Contact Us</a>
   </div>
-
 </div>
 
 </div>
@@ -640,7 +369,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 L.marker([40.79, -73.69]).addTo(map).bindPopup("NY");
 L.marker([40.29, -74.72]).addTo(map).bindPopup("NJ");
-L.marker([41.82, -71.41]).addTo(map).bindPopup("RI");
 </script>
 
 </body>
