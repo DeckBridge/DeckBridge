@@ -8,19 +8,19 @@
 body {
   font-family: Arial;
   margin: 0;
-  background: #f8fafc; /* ⭐ same as other page */
+  background: #f8fafc;
 
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* navbar */
+
 .navbar {
   display: flex;
   justify-content: center;
   gap: 30px;
-  background: #93c5fd; /* ⭐ blue */
+  background: #93c5fd;
   padding: 15px;
   width: 100%;
   position: sticky;
@@ -39,36 +39,36 @@ body {
   text-decoration: underline;
 }
 
-/* 内容区域 */
+
 .container {
   flex: 1;
   text-align: center;
   padding: 20px;
 }
 
-/* 标题 */
+
 h1 {
   margin-top: 40px;
 }
 
-/* footer */
+
 .footer {
-  color: #64748b; /* ⭐ same softer gray */
+  color: #64748b; 
   text-align: center;
   padding: 20px;
   border-top: 1px solid #ddd;
 }
 
-/* dropdown 外层 */
+
 .dropdown {
   position: relative;
 }
 
-/* 下拉内容（默认隐藏） */
+
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%;        /* 出现在下面 */
+  top: 100%;    
   left: 0;
 
   background: white;
@@ -79,7 +79,7 @@ h1 {
   overflow: hidden;
 }
 
-/* 每个选项 */
+
 .dropdown-content a {
   display: block;
   padding: 10px;
@@ -87,13 +87,13 @@ h1 {
   text-decoration: none;
 }
 
-/* hover 效果 */
+
 .dropdown-content a:hover {
   background: #f1f5f9;
   transform: scale(1.05);
 }
 
-/* ⭐ hover 显示 */
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
