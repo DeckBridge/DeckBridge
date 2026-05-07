@@ -21,8 +21,8 @@ body {
   justify-content: center;
   gap: 30px;
   background: #93c5fd;
+  box-sizing: border-box;
   padding: 15px;
-  width: 100%;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -53,7 +53,7 @@ h1 {
 
 
 .footer {
-  color: #64748b; 
+  color: #64748b;
   text-align: center;
   padding: 20px;
   border-top: 1px solid #ddd;
@@ -68,7 +68,7 @@ h1 {
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%;    
+  top: 100%;
   left: 0;
 
   background: white;
@@ -97,7 +97,32 @@ h1 {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-  
+
+.toc {
+  position: fixed;
+  left: 100px;
+  top: 120px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toc a {
+  text-decoration: none;
+  color: #3b82f6;
+  font-size: 16px;
+}
+
+.toc a:hover {
+  text-decoration: underline;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
 </style>
 </head>
 
@@ -120,7 +145,12 @@ h1 {
 
 <div class="container">
   <h1>Environmental Science</h1>
-  <p>Check the images above to see what you've collected so far!</p>
+  <p>Check the themes to see what you've collected so far!</p>
+  <h2>Theme 1: Forces (released on ...)</h2>
+</div>
+
+<div class="toc">
+  <a href="#theme1">Theme 1: Forces (released on ...)</a>
 </div>
 
 <div class="footer">
