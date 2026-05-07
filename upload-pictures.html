@@ -12,7 +12,7 @@ body {
   min-height: 100vh;
 }
 
-/* navbar */
+
 .navbar {
   display: flex;
   justify-content: center;
@@ -34,18 +34,18 @@ body {
   text-decoration: underline;
 }
 
-/* ✅ 中间区域（关键） */
+
 .container {
   flex: 1;
   text-align: center;
 }
 
-/* 标题 */
+
 h1 {
   margin-top: 40px;
 }
 
-/* 卡片（你原本的 box） */
+
 .box {
   background: white;
   padding: 20px;
@@ -56,20 +56,20 @@ h1 {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* 输入框 */
+
 input {
   padding: 8px;
   margin: 5px;
 }
 
-/* 按钮 */
+
 button {
   padding: 8px 12px;
   margin: 5px;
   cursor: pointer;
 }
 
-/* 提示 */
+
 .reminder {
   font-size: 10px;
   color: red;
@@ -79,23 +79,23 @@ button {
   margin-bottom: 20px;
 }
 
-/* footer */
+
 .footer {
   color: #64748b;
   padding: 20px;
   text-align: center;
   border-top: 1px solid #ddd;
 }
-/* dropdown 外层 */
+
 .dropdown {
   position: relative;
 }
 
-/* 下拉内容（默认隐藏） */
+
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%;        /* 出现在下面 */
+  top: 100%;
   left: 0;
 
   background: white;
@@ -106,7 +106,7 @@ button {
   overflow: hidden;
 }
 
-/* 每个选项 */
+
 .dropdown-content a {
   display: block;
   padding: 10px;
@@ -114,13 +114,13 @@ button {
   text-decoration: none;
 }
 
-/* hover 效果 */
+
 .dropdown-content a:hover {
   background: #f1f5f9;
   transform: scale(1.05);
 }
 
-/* ⭐ hover 显示 */
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
@@ -129,7 +129,7 @@ button {
 
 <body>
 
-<!-- ⭐ navbar必须在body里 -->
+
 <div class="navbar">
   <a href="index.html">Home</a>
   <a href="about.html">About Us</a>
@@ -151,7 +151,7 @@ button {
   We will email you as soon as we receive your picture!
   </div>
   
-<!-- LOGIN -->
+
 <div class="box">
   <h2>Login System</h2>
   <div class="reminder">
@@ -167,7 +167,7 @@ button {
   <p id="userStatus">Not logged in</p>
 </div>
 
-<!-- UPLOAD -->
+
 <div class="box">
   <h2>Upload Image</h2>
 
@@ -177,7 +177,7 @@ button {
   <img id="preview" width="200">
 </div>
 
-<!-- GALLERY -->
+  
 <div class="box">
   <h2>Gallery</h2>
   <div id="gallery"></div>
