@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Contact Us</title>
 
-<!-- EmailJS -->
+  
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 <style>
@@ -17,7 +17,7 @@ body {
   flex-direction: column;
 }
 
-/* navbar */
+
 .navbar {
   display: flex;
   justify-content: center;
@@ -40,7 +40,7 @@ body {
   text-decoration: underline;
 }
 
-/* dropdown */
+
 .dropdown {
   position: relative;
 }
@@ -71,14 +71,14 @@ body {
   display: block;
 }
 
-/* content */
+
 .container {
   flex: 1;
   padding: 40px;
   text-align: center;
 }
 
-/* card */
+
 .card {
   background: white;
   padding: 25px;
@@ -90,7 +90,7 @@ body {
   text-align: left;
 }
 
-/* inputs */
+
 input, textarea {
   width: 100%;
   padding: 10px;
@@ -100,7 +100,7 @@ input, textarea {
   border: 1px solid #ddd;
 }
 
-/* button */
+
 button {
   background: #3b82f6;
   color: white;
@@ -114,7 +114,7 @@ button:hover {
   background: #2563eb;
 }
 
-/* footer */
+
 .footer {
   color: #64748b;
   padding: 20px;
@@ -130,7 +130,7 @@ button:hover {
 
 <body>
 
-<!-- navbar -->
+
 <div class="navbar">
   <a href="index.html">Home</a>
   <a href="about.html">About Us</a>
@@ -147,7 +147,7 @@ button:hover {
   <a href="contact-us.html">Contact Us</a>
 </div>
 
-<!-- content -->
+
 <div class="container">
   <h1>Contact Us</h1>
 
@@ -170,13 +170,13 @@ button:hover {
   </div>
 </div>
 
-<!-- footer -->
+
 <div class="footer">
   <p><b>DeckBridge</b></p>
   <p>Site by Gia Jing</p>
 </div>
 
-<!-- EmailJS script -->
+
 <script>
 function sendEmail() {
   const params = {
@@ -186,13 +186,13 @@ function sendEmail() {
   };
   
 (function(){
-  emailjs.init("X-YzDtMwqb-jGtpzD");  // your public key
+  emailjs.init("X-YzDtMwqb-jGtpzD"); 
 })();
   
-  // 1️⃣ send to YOU
+
   emailjs.send("service_1ngugnc", "template_ang4b1q", params);
 
-  // 2️⃣ auto reply to USER
+
   emailjs.send("service_1ngugnc", "template_m9407nc", params)
     .then(function() {
       alert("Message sent!");
